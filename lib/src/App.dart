@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'home_views/HomeView.dart';
+import 'login_views/LoginPhoneView.dart';
+import 'login_views/LoginView.dart';
+import 'login_views/RegisterView.dart';
 
 class App extends StatelessWidget{
 
@@ -20,10 +23,10 @@ class App extends StatelessWidget{
       title: 'MyfirstFlutter',
       initialRoute: getInitialRoute(),
       routes: {
-        '/home':(context) => HomeView(),/*
+        '/home':(context) => HomeView(),
         '/loginPhoneView':(context) => LoginPhoneView(),
         '/loginView':(context) => const LoginView(),
-        '/registerView':(context) => RegisterView(),*/
+        '/registerView':(context) => RegisterView(),
 
     },
     );
