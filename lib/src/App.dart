@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget{
+
+  const App ({Key?key}):super (key: key);
+
+  String getInitialRoute(){
+    if ( FirebaseAuth.instance.currentUser==null){
+      return '/loginPhoneView';
+    }else{
+      return'/home';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return MaterialApp(
+      title: 'MyfirstFlutter',
+      initialRoute: getInitialRoute(),
+      routes: {/*
+        '/home':(context) => HomeView();
+        '/loginPhoneView':(context) => LoginPhoneView();
+        '/loginView':(context) => const LoginView();
+        '/registerView':(context) => RegisterView();*/
+
+    },
+    );
   }
 
 }
