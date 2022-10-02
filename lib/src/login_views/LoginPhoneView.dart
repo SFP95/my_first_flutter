@@ -12,8 +12,8 @@ class LoginPhoneView extends StatefulWidget{
 
 class _LoginPhoneView extends State<LoginPhoneView>{
 
-  RFInputText inputPhone=RFInputText();
-  RFInputText inputCode=RFInputText();
+  RFInputText inputPhone=RFInputText(titulo: 'Numero de Telefono:',);
+  RFInputText inputCode=RFInputText(titulo: 'Codifo de verificación: ',);
   bool blIsWaitingForSMS=false;
   late String verificationID;
 
