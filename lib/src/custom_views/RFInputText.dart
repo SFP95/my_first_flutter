@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class RFInputText extends StatelessWidget{
 
   final String titulo;
+  final String ayuda;
   final bool blIsPsswd;
   final TextEditingController myController = TextEditingController();
 
-  RFInputText({Key? key,  this.titulo="",  this.blIsPsswd=false}): super (key:key);
+  RFInputText({Key? key,  this.titulo="",  this.blIsPsswd=false,  this.ayuda=""}): super (key:key);
 
   String getText(){
     return myController.text;
@@ -20,11 +21,11 @@ class RFInputText extends StatelessWidget{
       maxLength: 80,
       decoration: const InputDecoration(
         icon: Icon(Icons.account_circle_outlined),
-        labelText: "EMAIL",
+        labelText: titulo, //EMAIL
         labelStyle: TextStyle(
           color: Color(0xFF6200EE),
         ),
-        helperText:'Ej: MrPotato@micorreo.com',
+        helperText: ayuda, //Ej: MrPotato@micorreo.com
         suffixIcon: Icon(
           Icons.abc,
         ),
