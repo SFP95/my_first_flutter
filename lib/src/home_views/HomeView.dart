@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget{
+  final FirebaseFirestore bd= FirebaseFirestore.instance;
+
   @override
   State<StatefulWidget> createState() {
     return _HomeView();
@@ -10,11 +12,21 @@ class HomeView extends StatefulWidget{
 
 class _HomeView extends State<HomeView>{
 
-  //FirebaseFirestore bd= FirebaseFirestore.instance;
+
   String nombre="AQUI VA EL NOMBRE";
 
   void getProfile() async{
-    final docRef = db.collection("perfiles").doc(FireBaseAuth.instance,currentUser?.uid);
+    //final docRef = db.collection("perfiles").doc(FireBaseAuth.instance,currentUser?.uid);
+    final docRef = db.collection("perfiles").doc(
+      FirebaseAuth.instance.currentUser.withConverter (fromFirestore: Perfil) //sin acabar
+    );
+    final docSnap = await ref.get();
+    final city = docSnap.data(); // Convert to City object
+    if (city != null) {
+      print(city);
+    } else {
+      print("No such document.");
+    }
 
     await docRef.get().then(
         (DocumentSnapshot doc){
