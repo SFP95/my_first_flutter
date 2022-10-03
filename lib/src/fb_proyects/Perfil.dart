@@ -1,18 +1,15 @@
 class Perfil { // modificar en base a lo que tenemos en la base de datos del firebase
   final String? name;
-  final String? state;
+  final String? city;
   final String? country;
-  final bool? capital;
-  final int? population;
-  final List<String>? regions;
+  final int? edad;
+
 
   Perfil({
-    this.name,
-    this.state,
-    this.country,
-    this.capital,
-    this.population,
-    this.regions,
+    this.name="",
+    this.city="",
+    this.country="",
+    this.edad=0,
   });
 
   factory Perfil.fromFirestore(
