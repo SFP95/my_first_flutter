@@ -1,10 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import '../fb_proyects/Perfil.dart';
 
 class HomeView extends StatefulWidget{
-  final FirebaseFirestore bd= FirebaseFirestore.instance;
+ // final FirebaseFirestore db= FirebaseFirestore.instance;
 
   @override
   State<StatefulWidget> createState() {
@@ -15,6 +15,7 @@ class HomeView extends StatefulWidget{
 
 class _HomeView extends State<HomeView>{
 
+  FirebaseFirestore bd= FirebaseFirestore.instance;
 
   String nombre="AQUI VA EL NOMBRE";
 
