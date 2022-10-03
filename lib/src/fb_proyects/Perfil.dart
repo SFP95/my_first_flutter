@@ -1,4 +1,4 @@
-class Perfil {
+class Perfil { // modificar en base a lo que tenemos en la base de datos del firebase
   final String? name;
   final String? state;
   final String? country;
