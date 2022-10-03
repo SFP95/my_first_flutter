@@ -19,7 +19,7 @@ class _HomeView extends State<HomeView>{
   String nombre=" **** ";
   bool blIsRefresBtnVisible=true;
 
-  void getProfile() async{
+  /*void getProfile() async{
 
     //final docRef = db.collection("perfiles").doc(FireBaseAuth.instance,currentUser?.uid);
     /*final docRef = db.collection("perfiles").doc(
@@ -45,7 +45,7 @@ class _HomeView extends State<HomeView>{
           });
         }
     );*/
-  }
+  }*/
 
   void actualizarNombre() async{
 
