@@ -47,29 +47,22 @@ class _HomeView extends State<HomeView>{
     );*/
   }
 
-  void actualizarNombre(){
+  void actualizarNombre() async{
 
     String? IdUser=FirebaseAuth.instance.currentUser?.uid;
-    final docRef = db.collection("perfiles").doc(IdUser);
+    final docRef = db.collection("perfiles").doc(IdUser).withConverter(fromFirestore: Perfil.fromFirestore, toFirestore: (Perfil perfil,_)=>perfil.toFirestore());
 
-     docRef.get().then(
-          (DocumentSnapshot doc) {
-            if (doc.exists) {
-              final data = doc.data() as Map<String, dynamic>;
-              print("---->"+data.toString()+" -- "+doc.get('name')+" - "+data['name']);
-            }
-            setState(() {
-              nombre=doc.get('name');
-              blIsRefresBtnVisible=false;
-            });
-      },
-      onError: (e) => print("Error getting document: $e"),
+    final docSnap = await docRef.get();
+    final perfilUser = docSnap.data(); // Convert to City object
 
-    );
-    setState(() {
-      nombre='ESPERANDO ...';
-
-    });
+    if (perfilUser != null) {
+      print(perfilUser);
+      setState(() {
+        nombre=perfilUser.name!;
+      });
+    } else {
+      print("No such document.");
+    }
   }
 
   @override
