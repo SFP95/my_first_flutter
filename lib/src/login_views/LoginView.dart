@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
 
@@ -7,7 +8,7 @@ class LoginView extends StatelessWidget{
 
   void LogPressed(String emailAddress, String password, BuildContext context) async{
     try{
-      final credential= await FirebaseAuth.instance.singInWithEmailAndPassword(
+      final credential= await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
@@ -48,10 +49,10 @@ class LoginView extends StatelessWidget{
                       // print("FUNCIONO"+psswd.geText());
                       try {
                         final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                          email: input1.geText(),
-                          password: psswd.geText(),
+                          email: inputUser.getText(),
+                          password: inputPsswd.getText(),
                         );
-                        print(' -- ESTOY DENTRO ---- Bienvenido '+input1.geText());
+                        print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
                         Navigator.of(context).popAndPushNamed('/Home');
 
                       } on FirebaseAuthException catch (e) {

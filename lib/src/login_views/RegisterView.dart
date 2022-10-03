@@ -1,4 +1,5 @@
- import 'package:flutter/cupertino.dart';
+ import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
 
@@ -7,7 +8,9 @@ class RegisterView extends StatelessWidget{
   RegisterView({Key?key}):super(key: key);
 
   final myController = TextEditingController();
-
+  final input=RFInputText(titulo: 'USUARIO: ',);
+  final psswd=RFInputText();
+  final psswdConf=RFInputText();
 
   void btnPressed() async{
     try {
@@ -31,9 +34,7 @@ class RegisterView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    input=RFInputText(titulo: 'USUARIO: ',);
-    psswd=RFInputText();
-    psswfConf=RFInputText();
+
 
     var txt=TextEditingController();
     TextField txtMensaje=TextField(controller: myController, readOnly: true, style: TextStyle(color: Colors.red,fontSize: 16),);
@@ -56,8 +57,8 @@ class RegisterView extends StatelessWidget{
                         // print("FUNCIONO"+psswd.geText());
                         try {
                           final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                            email: input.geText(),
-                            password: psswd.geText(),
+                            email: input.getText(),
+                            password: psswd.getText(),
                           );
                           print(' -- ESTOY DENTRO ---- Bienvenido '+input.getText());
                           Navigator.of(context).popAndPushNamed('/loginView');
