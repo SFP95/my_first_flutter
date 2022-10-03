@@ -44,7 +44,7 @@ class _LoginPhoneView extends State<LoginPhoneView>{
 
   void enviarCode(String smsCode, BuildContext context) async{
     // Create a PhoneAuthCredential with the code
-    PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode);
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationID, smsCode: smsCode);
 
     // Sign the user in (or link) with the credential
     await FirebaseAuth.instance.signInWithCredential(credential);
