@@ -15,7 +15,7 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
     this.name="",
   });
 
-  factory Perfil.fromFirestore( //  hay que descargar su document SnapShot pero no se puede hacer hasta que se tenga bien el firebase
+  factory Perfil.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,
       ) {
@@ -23,7 +23,7 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
     return Perfil(
       city: data?['city'],
       country: data?['country'],
-      edad: data!['edad'],
+      edad: data?['edad'],
       name: data?['name'],
     );
   }
@@ -32,7 +32,7 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
     return {
       if (city != null) "capital": city,
       if (country != null) "country": country,
-      if (edad != null) "edad": edad,
+      if (edad != 0) "edad": edad,
       if (name != null) "name": name,
     };
   }
