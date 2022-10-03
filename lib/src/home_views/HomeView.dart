@@ -49,20 +49,26 @@ class _HomeView extends State<HomeView>{
 
   void actualizarNombre(){
 
-    final docRef = db.collection("perfiles").doc("zp56k7dZiWeXnJbpVq41");
+    String? IdUser=FirebaseAuth.instance.currentUser?.uid;
+    final docRef = db.collection("perfiles").doc(IdUser);
 
-    docRef.get().then(
+     docRef.get().then(
           (DocumentSnapshot doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        // ...
+            if (doc.exists) {
+              final data = doc.data() as Map<String, dynamic>;
+              print("---->"+data.toString()+" -- "+doc.get('name')+" - "+data['name']);
+            }
+            setState(() {
+              nombre=doc.get('name');
+              blIsRefresBtnVisible=false;
+            });
       },
       onError: (e) => print("Error getting document: $e"),
+
     );
-
-
     setState(() {
-      nombre="";
-      blIsRefresBtnVisible=false;
+      nombre='ESPERANDO ...';
+
     });
   }
 

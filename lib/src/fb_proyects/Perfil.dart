@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Perfil { // modificar en base a lo que tenemos en la base de datos del firebase
 
   final String? city;
@@ -21,7 +23,7 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
     return Perfil(
       city: data?['city'],
       country: data?['country'],
-      edad: data['edad'],
+      edad: data!['edad'],
       name: data?['name'],
     );
   }
