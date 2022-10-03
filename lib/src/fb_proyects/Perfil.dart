@@ -12,30 +12,25 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
     this.edad=0,
   });
 
-  factory Perfil.fromFirestore(
+  factory Perfil.fromFirestore( //  hay que descargar su document SnapShot pero no se puede hacer hasta que se tenga bien el firebase
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,
       ) {
     final data = snapshot.data();
     return Perfil(
       name: data?['name'],
-      state: data?['state'],
       country: data?['country'],
-      capital: data?['capital'],
-      population: data?['population'],
-      regions:
-      data?['regions'] is Iterable ? List.from(data?['regions']) : null,
+      city: data?['city'],
+      edad: data['edad'],
     );
   }
 
   Map<String, dynamic> toFirestore() {
     return {
       if (name != null) "name": name,
-      if (state != null) "state": state,
       if (country != null) "country": country,
-      if (capital != null) "capital": capital,
-      if (population != null) "population": population,
-      if (regions != null) "regions": regions,
+      if (city != null) "capital": city,
+      if (edad != null) "edad": edad,
     };
   }
 }
