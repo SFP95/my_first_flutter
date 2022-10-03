@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../fb_proyects/Perfil.dart';
+
 class HomeView extends StatefulWidget{
   final FirebaseFirestore bd= FirebaseFirestore.instance;
 
@@ -19,7 +21,7 @@ class _HomeView extends State<HomeView>{
   void getProfile() async{
     //final docRef = db.collection("perfiles").doc(FireBaseAuth.instance,currentUser?.uid);
     final docRef = db.collection("perfiles").doc(
-      FirebaseAuth.instance.currentUser.withConverter (fromFirestore: Perfil) //sin acabar
+      FirebaseAuth.instance.currentUser?.withConverter (fromFirestore: Perfil) //sin acabar
     );
     final docSnap = await ref.get();
     final city = docSnap.data(); // Convert to City object
