@@ -42,7 +42,7 @@ class RegisterView extends StatelessWidget{
       appBar: AppBar(
         title: Text('RegisterView'),
       ),
-      body: Center(
+      body: Center( //aqui tenia el error
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
