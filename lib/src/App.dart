@@ -12,7 +12,7 @@ class App extends StatelessWidget{
 
   String getInitialRoute(){
     if ( FirebaseAuth.instance.currentUser==null){
-      return '/loginPhoneView';
+      return '/loginView';
     }else{
       return'/onboarding';
     }
