@@ -9,7 +9,7 @@ class RegisterView extends StatelessWidget{
   final myController = TextEditingController();
   final input=RFInputText(titulo: 'USUARIO: ',);
   final psswd=RFInputText(titulo: 'Contraseña',);
-  final psswdConf=RFInputText(titulo: 'Repetir Conrtaseña',);
+  final psswdConf=RFInputText(titulo: 'Repetir Contraseña',);
 
   void btnPressed() async{
     try {
