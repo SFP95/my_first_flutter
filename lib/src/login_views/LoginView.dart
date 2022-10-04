@@ -13,7 +13,7 @@ class LoginView extends StatelessWidget{
         password: password,
       );
       print("ESTOY LOGEADO");
-      Navigator.of(context).popAndPushNamed('/home');
+      Navigator.of(context).popAndPushNamed('/onBoarding');
     }on FirebaseAuthException catch (e){
       if(e.code=='user-not-found'){
         print('No user found for that email');

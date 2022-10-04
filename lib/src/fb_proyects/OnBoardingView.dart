@@ -7,88 +7,59 @@ class OnBoardingView extends StatelessWidget{
   OnBoardingView({Key?key}):super(key: key);
 
   final myController = TextEditingController();
-  final RFInputText inputUser=RFInputText(
-    titulo: 'Escribe tu usuario:',
-    ayuda: 'MrPotato@gmail.com',);
-  final RFInputText inputPss=RFInputText(
-    titulo: 'Escribe tu Contraseña:',
-    ayuda: 'No menos de 8 caracteres',
-    blIsPsswd: true,);
-  final RFInputText inputRpPss=RFInputText(
-    titulo: 'Escribe tu Contraseña:',
-    ayuda: 'Repite la contraseña',
-    blIsPsswd: true,);
+
+  final RFInputText inpuNombre=RFInputText(
+    titulo: 'Nombre:',
+    ayuda: 'Escriba su Nombre',);
+  final RFInputText inputPais=RFInputText(
+    titulo: 'Pais:',
+    ayuda: 'Escriba su Pais',);
+  final RFInputText inputCiudad=RFInputText(
+    titulo: 'Ciudad:',
+    ayuda: 'Escriba su Ciudad',);
+  final RFInputText inputEdad=RFInputText(
+    titulo: 'Edad:',
+    ayuda: 'Escriba su Edad',);
 
 
-  void btnPressed() async{
-    try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: inputUser.getText(),
-        password: inputPss.getText(),
+  void accepPressed(String nombre, String ciuddad, String pais, int edad) async{
+    final cities = db.collection("cities");
+    final data1 = <String, dynamic>{
+      "name": "San Francisco",
+      "city": "CA",
+      "country": "USA",
+      "edad": 0,
 
-      );
-      print(' -- La cuenta ha sido creada --');
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('----- La contraseña es debil -----');
-      } else if (e.code == 'email-already-in-use') {
-        print('---- Ya existe una cuenta con ese email -----');
-      }
-    } catch (e) {
-      print(e);
-    }
+    };
+
   }
 
   @override
   Widget build(BuildContext context) {
 
 
-    var txt=TextEditingController();
     TextField txtMensaje=TextField(controller: myController, readOnly: true, style: TextStyle(color: Colors.red,fontSize: 16),);
 
     return Scaffold(
       backgroundColor: Colors.purple[50],
       appBar: AppBar(
-        title: Text('RegisterView'),
+        title: Text('On Boarding'),
         backgroundColor: Colors.deepPurple,
       ),
-      body: Center( //aqui tenia el error
-
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            inputUser,
-            inputPss,
-            inputRpPss,
+            inpuNombre,
+            inputPais,
+            inputCiudad,
+            inputEdad,
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed:(){
-                    if(inputPss.getText()==inputRpPss.getText()){
-                      void btnPressed(BuildContext context) async{
-                        // print("FUNCIONO"+psswd.geText());
-                        try {
-                          final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                            email: inputUser.getText(),
-                            password: inputPss.getText(),
-                          );
-                          print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
-                          Navigator.of(context).popAndPushNamed('/loginView');
-
-                        } on FirebaseAuthException catch (e) {
-                          if (e.code == 'weak-password') {
-                            txt.text="----- The password provided is too weak -----";
-                          } else if (e.code == 'email-already-in-use') {
-                            txt.text="---- Ya existe una cuenta con ese email -----";
-                          }
-                        } catch (e) {
-                          print(e);
-                        }
-                      }
-                    }else{
-                      txt.text="ERROR! LAS CONSTRASELAS NO COINCIDEN";
-                    }
+                    accepPressed();
                   },
 
                   child: Text("Aceptar"),

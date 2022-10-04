@@ -14,7 +14,7 @@ class App extends StatelessWidget{
     if ( FirebaseAuth.instance.currentUser==null){
       return '/loginView';
     }else{
-      return'/onboarding';
+      return'/onBoarding';
     }
   }
 
@@ -28,7 +28,7 @@ class App extends StatelessWidget{
         '/loginPhoneView':(context) => LoginPhoneView(),
         '/loginView':(context) => const LoginView(),
         '/registerView':(context) => RegisterView(),
-        '/onboarding':(context) => OnBoardingView(),
+        '/onBoarding':(context) => OnBoardingView(),
 
     },
     );
