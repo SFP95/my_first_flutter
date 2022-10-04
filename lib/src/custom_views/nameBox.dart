@@ -9,7 +9,7 @@ class nameBox extends StatelessWidget{
   Widget build(BuildContext context) {
     return DecoratedBox(
         decoration: BoxDecoration(
-          color: Colors.lightBlueAccent),
+          color: Colors.deepPurple),
         child: Padding(
           padding: const EdgeInsets.all(18.0),
           child: Text(Bxnombre),

@@ -39,12 +39,15 @@ class RegisterView extends StatelessWidget{
     TextField txtMensaje=TextField(controller: myController, readOnly: true, style: TextStyle(color: Colors.red,fontSize: 16),);
 
     return Scaffold(
+      backgroundColor: Colors.purple[50],
       appBar: AppBar(
         title: Text('RegisterView'),
+        backgroundColor: Colors.deepPurple,
       ),
       body: Center( //aqui tenia el error
+
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             input,
             psswd,

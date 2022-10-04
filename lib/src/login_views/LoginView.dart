@@ -30,11 +30,12 @@ class LoginView extends StatelessWidget{
     RFInputText inputPsswd= RFInputText(titulo: 'PASSWORD:',ayuda: 'No menos de 6 caracteres',);
 
     return Scaffold(
+      backgroundColor: Colors.purple[50],
       appBar: AppBar(
         title: Text('LoginView'),
-    ),
+        backgroundColor: Colors.deepPurple,
+      ),
       body: Center(
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

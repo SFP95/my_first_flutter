@@ -55,11 +55,11 @@ class _LoginPhoneView extends State<LoginPhoneView>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple[50],
       appBar: AppBar(
         title: const Text('Flutter Chat'),
         backgroundColor: Colors.deepPurple,
       ),
-      backgroundColor: Colors.deepPurple[100],
       body:
       Center(
         child: Column(

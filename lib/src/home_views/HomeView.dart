@@ -68,8 +68,10 @@ class _HomeView extends State<HomeView>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple[50],
       appBar: AppBar(
-        title: Text('MyFirstFlutter'),
+        backgroundColor: Colors.deepPurple,
+        title: Text('HomeView'),
       ),
       body: Center(
         child: Column(
@@ -83,6 +85,16 @@ class _HomeView extends State<HomeView>{
                 // Respond to button press
 
                 child: Text("Refrescar!"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.purple[900],
+                )),
+            ElevatedButton(
+                onPressed: (){
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).popAndPushNamed('/loginView');
+                },
+                // Respond to button press
+                child: Text("Logout"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.purple[900],
                 ))
