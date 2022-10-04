@@ -38,8 +38,11 @@ class RegisterView extends StatelessWidget{
     var txt=TextEditingController();
     TextField txtMensaje=TextField(controller: myController, readOnly: true, style: TextStyle(color: Colors.red,fontSize: 16),);
 
-    return MaterialApp(
-      home: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('RegisterView'),
+      ),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
