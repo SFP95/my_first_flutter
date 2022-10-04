@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
@@ -8,7 +9,7 @@ class OnBoardingView extends StatelessWidget{
 
   final myController = TextEditingController();
 
-  final RFInputText inpuNombre=RFInputText(
+  final RFInputText inputNombre=RFInputText(
     titulo: 'Nombre:',
     ayuda: 'Escriba su Nombre',);
   final RFInputText inputPais=RFInputText(
@@ -21,18 +22,20 @@ class OnBoardingView extends StatelessWidget{
     titulo: 'Edad:',
     ayuda: 'Escriba su Edad',);
 
+ FirebaseFirestore db=FirebaseFirestore.instance;
 
-  void accepPressed(String nombre, String ciuddad, String pais, int edad) async{
-    final cities = db.collection("cities");
-    final data1 = <String, dynamic>{
-      "name": "San Francisco",
-      "city": "CA",
-      "country": "USA",
-      "edad": 0,
-
+  void accepPressed(String nombre, String ciudad, String pais, int edad) async{
+    final datosPerfil = <String, dynamic>{
+      "name": nombre,
+      "country": pais,
+      "city": ciudad,
+      "edad": edad
     };
 
-  }
+    db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).set(datosPerfil)
+        .onError((e, _) => print("Error writing document: $e"));
+
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +53,7 @@ class OnBoardingView extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            inpuNombre,
+            inputNombre,
             inputPais,
             inputCiudad,
             inputEdad,
@@ -59,7 +62,7 @@ class OnBoardingView extends StatelessWidget{
               children: [
                 ElevatedButton(
                   onPressed:(){
-                    accepPressed();
+                    accepPressed(inputNombre.getText(),inputPais.getText(),inputCiudad.getText(),0);
                   },
 
                   child: Text("Aceptar"),
@@ -84,7 +87,7 @@ class OnBoardingView extends StatelessWidget{
       ),
 
     );
-
+  }
   }
 
-}
+
