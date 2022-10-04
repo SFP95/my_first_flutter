@@ -12,6 +12,11 @@ class OnBoardingView extends StatelessWidget{
   final psswd=RFInputText();
   final psswdConf=RFInputText();
 
+  RFInputText inputNombre=RFInputText(titulo: "Nombre");
+  RFInputText inputPais=RFInputText(titulo: "Pais");
+  RFInputText inputCiudad=RFInputText(titulo: "Ciudad");
+
+
   void btnPressed() async{
     try {
       final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
