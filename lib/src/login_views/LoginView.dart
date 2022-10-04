@@ -26,8 +26,13 @@ class LoginView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    RFInputText inputUser= RFInputText(titulo: 'USUARIO:',ayuda: 'MrPotato@gmai.com',);
-    RFInputText inputPsswd= RFInputText(titulo: 'PASSWORD:',ayuda: 'No menos de 6 caracteres',);
+    RFInputText inputUser= RFInputText(
+      titulo: 'USUARIO:',
+      ayuda: 'MrPotato@gmai.com',);
+    RFInputText inputPsswd= RFInputText(
+      titulo: 'PASSWORD:',
+      ayuda: 'No menos de 8 caracteres',
+      blIsPsswd: true,);
 
     return Scaffold(
       backgroundColor: Colors.purple[50],

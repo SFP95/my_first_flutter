@@ -7,15 +7,24 @@ class RegisterView extends StatelessWidget{
   RegisterView({Key?key}):super(key: key);
 
   final myController = TextEditingController();
-  final input=RFInputText(titulo: 'USUARIO: ',);
-  final psswd=RFInputText(titulo: 'Contraseña',);
-  final psswdConf=RFInputText(titulo: 'Repetir Contraseña',);
+  final RFInputText inputUser=RFInputText(
+    titulo: 'Escribe tu usuario:',
+    ayuda: 'MrPotato@gmail.com',);
+  final RFInputText inputPss=RFInputText(
+    titulo: 'Escribe tu Contraseña:',
+    ayuda: 'No menos de 8 caracteres',
+    blIsPsswd: true,);
+  final RFInputText inputRpPss=RFInputText(
+    titulo: 'Escribe tu Contraseña:',
+    ayuda: 'Repite la contraseña',
+    blIsPsswd: true,);
+
 
   void btnPressed() async{
     try {
       final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: input.getText(),
-        password: psswd.getText(),
+        email: inputUser.getText(),
+        password: inputPss.getText(),
 
       );
       print(' -- La cuenta ha sido creada --');
@@ -34,7 +43,6 @@ class RegisterView extends StatelessWidget{
   Widget build(BuildContext context) {
 
 
-
     var txt=TextEditingController();
     TextField txtMensaje=TextField(controller: myController, readOnly: true, style: TextStyle(color: Colors.red,fontSize: 16),);
 
@@ -49,23 +57,23 @@ class RegisterView extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            input,
-            psswd,
-            psswdConf,
+            inputUser,
+            inputPss,
+            inputRpPss,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                     ElevatedButton(
                       onPressed:(){
-                        if(psswd.getText()==psswdConf.getText()){
+                        if(inputPss.getText()==inputRpPss.getText()){
                           void btnPressed(BuildContext context) async{
                             // print("FUNCIONO"+psswd.geText());
                             try {
                               final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                                email: input.getText(),
-                                password: psswd.getText(),
+                                email: inputUser.getText(),
+                                password: inputPss.getText(),
                               );
-                              print(' -- ESTOY DENTRO ---- Bienvenido '+input.getText());
+                              print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
                               Navigator.of(context).popAndPushNamed('/loginView');
 
                             } on FirebaseAuthException catch (e) {

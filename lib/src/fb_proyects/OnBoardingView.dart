@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
 
@@ -8,20 +7,24 @@ class OnBoardingView extends StatelessWidget{
   OnBoardingView({Key?key}):super(key: key);
 
   final myController = TextEditingController();
-  final input=RFInputText(titulo: 'USUARIO: ',);
-  final psswd=RFInputText();
-  final psswdConf=RFInputText();
-
-  RFInputText inputNombre=RFInputText(titulo: "Nombre");
-  RFInputText inputPais=RFInputText(titulo: "Pais");
-  RFInputText inputCiudad=RFInputText(titulo: "Ciudad");
+  final RFInputText inputUser=RFInputText(
+    titulo: 'Escribe tu usuario:',
+    ayuda: 'MrPotato@gmail.com',);
+  final RFInputText inputPss=RFInputText(
+    titulo: 'Escribe tu Contraseña:',
+    ayuda: 'No menos de 8 caracteres',
+    blIsPsswd: true,);
+  final RFInputText inputRpPss=RFInputText(
+    titulo: 'Escribe tu Contraseña:',
+    ayuda: 'Repite la contraseña',
+    blIsPsswd: true,);
 
 
   void btnPressed() async{
     try {
       final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: input.getText(),
-        password: psswd.getText(),
+        email: inputUser.getText(),
+        password: inputPss.getText(),
 
       );
       print(' -- La cuenta ha sido creada --');
@@ -40,32 +43,37 @@ class OnBoardingView extends StatelessWidget{
   Widget build(BuildContext context) {
 
 
-
     var txt=TextEditingController();
     TextField txtMensaje=TextField(controller: myController, readOnly: true, style: TextStyle(color: Colors.red,fontSize: 16),);
 
-    return MaterialApp(
-      home: Center(
+    return Scaffold(
+      backgroundColor: Colors.purple[50],
+      appBar: AppBar(
+        title: Text('RegisterView'),
+        backgroundColor: Colors.deepPurple,
+      ),
+      body: Center( //aqui tenia el error
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            input,
-            psswd,
-            psswdConf,
+            inputUser,
+            inputPss,
+            inputRpPss,
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed:(){
-                    if(psswd.getText()==psswdConf.getText()){
+                    if(inputPss.getText()==inputRpPss.getText()){
                       void btnPressed(BuildContext context) async{
                         // print("FUNCIONO"+psswd.geText());
                         try {
                           final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                            email: input.getText(),
-                            password: psswd.getText(),
+                            email: inputUser.getText(),
+                            password: inputPss.getText(),
                           );
-                          print(' -- ESTOY DENTRO ---- Bienvenido '+input.getText());
+                          print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
                           Navigator.of(context).popAndPushNamed('/loginView');
 
                         } on FirebaseAuthException catch (e) {
@@ -79,7 +87,7 @@ class OnBoardingView extends StatelessWidget{
                         }
                       }
                     }else{
-                      txt.text="ERROR ! LAS CONSTRASELAS NO COINCIDEN";
+                      txt.text="ERROR! LAS CONSTRASELAS NO COINCIDEN";
                     }
                   },
 
@@ -89,15 +97,16 @@ class OnBoardingView extends StatelessWidget{
                   ),
                 ),
                 ElevatedButton(
-                    onPressed: (){
-                      Navigator.of(context).popAndPushNamed('/loginView');
-                    },
-                    // Respond to button press
+                  onPressed: (){
+                    Navigator.of(context).popAndPushNamed('/loginView');
+                  },
+                  // Respond to button press
 
-                    child: Text("Cancelar"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple[900],
-                    ))
+                  child: Text("Cancelar"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple[900],
+                  ),
+                ),
               ],
             )],
         ),
