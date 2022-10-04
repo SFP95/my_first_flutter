@@ -24,7 +24,7 @@ class OnBoardingView extends StatelessWidget{
 
  FirebaseFirestore db=FirebaseFirestore.instance;
 
-  void accepPressed(String nombre, String ciudad, String pais, int edad) async{
+  void accepPressed(String nombre, String ciudad, String pais, int edad,BuildContext context) async{
     final datosPerfil = <String, dynamic>{
       "name": nombre,
       "country": pais,
@@ -32,9 +32,10 @@ class OnBoardingView extends StatelessWidget{
       "edad": edad
     };
 
-    db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).set(datosPerfil)
+    await db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).set(datosPerfil)
         .onError((e, _) => print("Error writing document: $e"));
 
+    Navigator.of(context).popAndPushNamed('/home');
     }
 
   @override
@@ -62,7 +63,7 @@ class OnBoardingView extends StatelessWidget{
               children: [
                 ElevatedButton(
                   onPressed:(){
-                    accepPressed(inputNombre.getText(),inputPais.getText(),inputCiudad.getText(),0);
+                    accepPressed(inputNombre.getText(),inputPais.getText(),inputCiudad.getText(),0,context);
                   },
 
                   child: Text("Aceptar"),
@@ -72,7 +73,7 @@ class OnBoardingView extends StatelessWidget{
                 ),
                 ElevatedButton(
                   onPressed: (){
-                    Navigator.of(context).popAndPushNamed('/loginView');
+
                   },
                   // Respond to button press
 
