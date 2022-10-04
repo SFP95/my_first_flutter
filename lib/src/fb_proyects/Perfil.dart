@@ -15,6 +15,11 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
     this.name="",
   });
 
+ /* void iniPerfil(Map <Strign, dynamic> datos){         ALTERNATIVA A LA DE ABAJO, PERSONAL
+    name=datos['name'] as String;
+  }*/
+
+
   factory Perfil.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,
