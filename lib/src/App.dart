@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/src/fb_proyects/OnBoardingView.dart';
 import 'home_views/HomeView.dart';
 import 'login_views/LoginPhoneView.dart';
 import 'login_views/LoginView.dart';
@@ -13,7 +14,7 @@ class App extends StatelessWidget{
     if ( FirebaseAuth.instance.currentUser==null){
       return '/loginPhoneView';
     }else{
-      return'/home';
+      return'/onboarding';
     }
   }
 
@@ -27,6 +28,7 @@ class App extends StatelessWidget{
         '/loginPhoneView':(context) => LoginPhoneView(),
         '/loginView':(context) => const LoginView(),
         '/registerView':(context) => RegisterView(),
+        '/onboarding':(context) => OnBoardingView(),
 
     },
     );
