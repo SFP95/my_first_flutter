@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
 
-class RegisterView extends StatelessWidget{
+class OnBoardingView extends StatelessWidget{
 
-  RegisterView({Key?key}):super(key: key);
+  OnBoardingView({Key?key}):super(key: key);
 
   final myController = TextEditingController();
   final input=RFInputText(titulo: 'USUARIO: ',);
