@@ -16,29 +16,28 @@ class SplashView extends StatefulWidget{
 class _SplashView extends State<SplashView>{
   FirebaseFirestore db= FirebaseFirestore.instance;
 
-  String nombre=" **** ";
-  bool blIsRefresBtnVisible=true;
 
+    String isUserLogged(){
 
-  void actualizarNombre() async{
-
-    String? IdUser=FirebaseAuth.instance.currentUser?.uid;
-    final docRef = db.collection("perfiles").doc(IdUser).withConverter(
-        fromFirestore: Perfil.fromFirestore,
-        toFirestore: (Perfil perfil,_)=>perfil.toFirestore());
-
-    final docSnap = await docRef.get();
-    final perfilUser = docSnap.data(); // Convert to City object
-
-    if (perfilUser != null) {
-      print(perfilUser);
-      setState(() {
-        nombre=perfilUser.name!;
-      });
-    } else {
-      print("No such document.");
+      if ( FirebaseAuth.instance.currentUser==null){
+        return '/loginView';
+      }else {
+        if (checkPerfilExistance() == true) {
+          return '/home';
+        } else {
+          return '/onBoarding';
+        }
+      }
     }
-  }
+
+    Future<bool> checkPerfilExistance() async {
+
+      final docRef = db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).withConverter(
+          fromFirestore: Perfil.fromFirestore,
+          toFirestore: (Perfil perfil,_)=>perfil.toFirestore());
+      final docSnap= await docRef.get();
+      return docSnap.exists;
+    }
 
   @override
   Widget build(BuildContext context) {

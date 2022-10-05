@@ -13,33 +13,13 @@ class App extends StatelessWidget{
 
   const App ({Key?key}):super (key: key);
 
-  String getInitialRoute(){
-    if ( FirebaseAuth.instance.currentUser==null){
-      return '/loginView';
-    }else {
-      if (checkPerfilExistance() == true) {
-        return '/home';
-      } else {
-        return '/onBoarding';
-      }
-    }
-  }
 
-  Future<bool> checkPerfilExistance() async {
-    FirebaseFirestore db=FirebaseFirestore.instance;
-
-    final docRef = db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).withConverter(
-        fromFirestore: Perfil.fromFirestore,
-        toFirestore: (Perfil perfil,_)=>perfil.toFirestore());
-    final docSnap= await docRef.get();
-    return docSnap.exists;
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MyfirstFlutter',
-      initialRoute: '/splashView',//getInitialRoute(),
+      initialRoute: '/splashView',
       routes: {
         '/home':(context) => HomeView(),
         '/loginPhoneView':(context) => LoginPhoneView(),
