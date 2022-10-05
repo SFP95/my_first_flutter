@@ -4,13 +4,21 @@ import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
 
 class LoginView extends StatelessWidget{
 
-  const LoginView ({Key?key}):super (key: key);
+    LoginView ({Key?key}):super (key: key);
 
-  void LogPressed(String emailAddress, String password, BuildContext context) async{
+   late RFInputText inputUser= RFInputText(
+     titulo: 'USUARIO:',
+     ayuda: 'MrPotato@gmai.com',);
+   late RFInputText inputPsswd= RFInputText(
+     titulo: 'PASSWORD:',
+     ayuda: 'No menos de 8 caracteres',
+     blIsPsswd: true,);
+
+  void LogPressed(String inputUser, String inputPsswd, BuildContext context) async{
     try{
       final credential= await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailAddress,
-        password: password,
+        email: inputUser,
+        password: inputPsswd,
       );
       print("ESTOY LOGEADO");
       Navigator.of(context).popAndPushNamed('/onBoarding');
@@ -26,13 +34,6 @@ class LoginView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    RFInputText inputUser= RFInputText(
-      titulo: 'USUARIO:',
-      ayuda: 'MrPotato@gmai.com',);
-    RFInputText inputPsswd= RFInputText(
-      titulo: 'PASSWORD:',
-      ayuda: 'No menos de 8 caracteres',
-      blIsPsswd: true,);
 
     return Scaffold(
       backgroundColor: Colors.purple[50],
@@ -50,16 +51,17 @@ class LoginView extends StatelessWidget{
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: (){
-                    void btnPressed(BuildContext context) async{
-                      // print("FUNCIONO"+psswd.geText());
+                  onPressed: ()async{
+
+                      print("FUNCIONO  --  "+inputUser.getText());
+
                       try {
                         final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                           email: inputUser.getText(),
                           password: inputPsswd.getText(),
                         );
                         print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
-                        Navigator.of(context).popAndPushNamed('/Home');
+                        Navigator.of(context).popAndPushNamed('/home');
 
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
@@ -70,7 +72,6 @@ class LoginView extends StatelessWidget{
                       } catch (e) {
                         print(e);
                       }
-                    }
                   },
 
                   child: Text("LOGIN"),

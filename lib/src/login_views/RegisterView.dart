@@ -5,7 +5,7 @@ import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
 class RegisterView extends StatelessWidget{
 
   RegisterView({Key?key}):super(key: key);
-
+  var txt=TextEditingController();
   final myController = TextEditingController();
   final RFInputText inputUser=RFInputText(
     titulo: 'Escribe tu usuario:',
@@ -20,22 +20,24 @@ class RegisterView extends StatelessWidget{
     blIsPsswd: true,);
 
 
-  void btnPressed() async{
+  void btnPressed(BuildContext context) async{
+    print("FUNCIONO  --  "+inputUser.getText());
     try {
       final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: inputUser.getText(),
         password: inputPss.getText(),
-
       );
-      print(' -- La cuenta ha sido creada --');
+      print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
+      Navigator.of(context).popAndPushNamed('/loginView');
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('----- La contraseña es debil -----');
+        txt.text="----- The password provided is too weak -----";
       } else if (e.code == 'email-already-in-use') {
-        print('---- Ya existe una cuenta con ese email -----');
+        txt.text="---- Ya existe una cuenta con ese email -----";
       }
     } catch (e) {
-      print(e);
+      print(" NO FUNCIONO "+e.toString());
     }
   }
 
@@ -43,7 +45,7 @@ class RegisterView extends StatelessWidget{
   Widget build(BuildContext context) {
 
 
-    var txt=TextEditingController();
+
     TextField txtMensaje=TextField(controller: myController, readOnly: true, style: TextStyle(color: Colors.red,fontSize: 16),);
 
     return Scaffold(
@@ -61,31 +63,12 @@ class RegisterView extends StatelessWidget{
             inputPss,
             inputRpPss,
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                     ElevatedButton(
                       onPressed:(){
                         if(inputPss.getText()==inputRpPss.getText()){
-                          void btnPressed(BuildContext context) async{
-                            // print("FUNCIONO"+psswd.geText());
-                            try {
-                              final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                                email: inputUser.getText(),
-                                password: inputPss.getText(),
-                              );
-                              print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
-                              Navigator.of(context).popAndPushNamed('/loginView');
-
-                            } on FirebaseAuthException catch (e) {
-                              if (e.code == 'weak-password') {
-                                txt.text="----- The password provided is too weak -----";
-                              } else if (e.code == 'email-already-in-use') {
-                                txt.text="---- Ya existe una cuenta con ese email -----";
-                              }
-                            } catch (e) {
-                              print(e);
-                            }
-                          }
+                          btnPressed(context);
                         }else{
                           txt.text="ERROR! LAS CONSTRASELAS NO COINCIDEN";
                         }

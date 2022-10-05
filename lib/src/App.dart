@@ -26,7 +26,7 @@ class App extends StatelessWidget{
       routes: {
         '/home':(context) => HomeView(),
         '/loginPhoneView':(context) => LoginPhoneView(),
-        '/loginView':(context) => const LoginView(),
+        '/loginView':(context) =>  LoginView(),
         '/registerView':(context) => RegisterView(),
         '/onBoarding':(context) => OnBoardingView(),
 
