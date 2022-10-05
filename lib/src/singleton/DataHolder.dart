@@ -1,8 +1,11 @@
 
+import 'package:my_first_flutter/src/fb_proyects/Perfil.dart';
+
 class DataHolder {
   static final DataHolder _dataHolder=new DataHolder._internal();
 
   String sMensaje=" ";
+  Perfil perfil=Perfil();
 
   /*static DataHolder get instance{
 
