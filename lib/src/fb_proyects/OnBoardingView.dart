@@ -73,7 +73,7 @@ class OnBoardingView extends StatelessWidget{
                 ),
                 ElevatedButton(
                   onPressed: (){
-
+                    Navigator.of(context).popAndPushNamed('/loginView');
                   },
                   // Respond to button press
 

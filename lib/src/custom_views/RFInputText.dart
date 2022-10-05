@@ -20,7 +20,6 @@ class RFInputText extends StatelessWidget{
       controller: myController,
       cursorColor: Colors.purpleAccent,
       maxLength: 80,
-      //obscureText: blIsPsswd, //me d aeeor por algo
       enableSuggestions: !blIsPsswd,
       autocorrect: !blIsPsswd,
       decoration: InputDecoration(
