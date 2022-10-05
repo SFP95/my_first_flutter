@@ -39,7 +39,7 @@ class OnBoardingView extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-  inputEdad.setInitialValue("VALOR INICIAL NOMBRE");
+  //inputEdad.setInitialValue("VALOR INICIAL NOMBRE");
 
     TextField txtMensaje=TextField(controller: myController, readOnly: true, style: TextStyle(color: Colors.red,fontSize: 16),);
 
