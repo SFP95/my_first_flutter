@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
 
+import 'Perfil.dart';
+
 class OnBoardingView extends StatelessWidget{
 
   OnBoardingView({Key?key}):super(key: key);
@@ -25,14 +27,11 @@ class OnBoardingView extends StatelessWidget{
  FirebaseFirestore db=FirebaseFirestore.instance;
 
   void accepPressed(String nombre, String ciudad, String pais, int edad,BuildContext context) async{
-    final datosPerfil = <String, dynamic>{
-      "name": nombre,
-      "country": pais,
-      "city": ciudad,
-      "edad": edad
-    };
 
-    await db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).set(datosPerfil)
+    Perfil perfil= Perfil(name: nombre, country: pais, city: ciudad,edad: edad);
+
+
+    await db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).set(perfil.toFirestore())
         .onError((e, _) => print("Error writing document: $e"));
 
     Navigator.of(context).popAndPushNamed('/home');
@@ -63,7 +62,7 @@ class OnBoardingView extends StatelessWidget{
               children: [
                 ElevatedButton(
                   onPressed:(){
-                    accepPressed(inputNombre.getText(),inputPais.getText(),inputCiudad.getText(),0,context);
+                    accepPressed(inputNombre.getText(),inputPais.getText(),inputCiudad.getText(),int.parse(inputEdad.getText()),context);
                   },
 
                   child: Text("Aceptar"),

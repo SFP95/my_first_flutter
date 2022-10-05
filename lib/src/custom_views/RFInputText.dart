@@ -9,9 +9,9 @@ class RFInputText extends StatelessWidget{
 
   RFInputText({Key? key,  this.titulo="",  this.blIsPsswd=false,  this.ayuda=""}): super (key:key);
 
-  void setInitialValue(String sInitialValue){
+  /*void setInitialValue(String sInitialValue){
     myController.text=sInitialValue;
-  }
+  }*/
 
 
   String getText(){
