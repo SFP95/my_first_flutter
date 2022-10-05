@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/src/singleton/DataHolder.dart';
 import '../fb_proyects/Perfil.dart';
 
 class HomeView extends StatefulWidget{
@@ -52,7 +53,7 @@ class _HomeView extends State<HomeView>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("HOME VIEW -- BIENVENIDO: "+nombre),
+            Text(DataHolder().sMensaje+"-- BIENVENIDO: "+nombre),
             if (blIsRefresBtnVisible)ElevatedButton(
                 onPressed: (){
                  actualizarNombre();
