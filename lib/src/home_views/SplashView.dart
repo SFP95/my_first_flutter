@@ -16,16 +16,22 @@ class SplashView extends StatefulWidget{
 class _SplashView extends State<SplashView>{
   FirebaseFirestore db= FirebaseFirestore.instance;
 
+@override
+  void initState(){
+    super.initState();
+    isUserLogged();
+  }
 
-    String isUserLogged(){
+    void isUserLogged()async{
+         await Future.delayed(Duration(seconds: 5));
 
       if ( FirebaseAuth.instance.currentUser==null){
-        return '/loginView';
+        Navigator.of(context).popAndPushNamed('/loginView');
       }else {
         if (checkPerfilExistance() == true) {
-          return '/home';
+          Navigator.of(context).popAndPushNamed('/home');
         } else {
-          return '/onBoarding';
+          Navigator.of(context).popAndPushNamed('/onBoarding');
         }
       }
     }
