@@ -58,7 +58,7 @@ class _SplashView extends State<SplashView>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("BUENVENIDO A FLUTTER CHAT !"),
+            Text("BIENVENIDO A FLUTTER CHAT !"),
           ],
         ),
       ),
