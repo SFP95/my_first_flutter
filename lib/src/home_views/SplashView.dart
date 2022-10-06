@@ -5,6 +5,7 @@ import '../fb_proyects/Perfil.dart';
 
 class SplashView extends StatefulWidget{
 
+//es para las cosas visuales de la aplicacion, los efectos visuales
 
   @override
   State<StatefulWidget> createState() {
@@ -48,7 +49,11 @@ class _SplashView extends State<SplashView>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: Colors.purple[50],
+      appBar: AppBar(
+        title: Text('SplashView'),
+        backgroundColor: Colors.deepPurple,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

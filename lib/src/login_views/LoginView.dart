@@ -68,7 +68,12 @@ class LoginView extends StatelessWidget{
                           print('----- La contraseña es debil -----');
                         } else if (e.code == 'email-already-in-use') {
                           print('---- Ya existe una cuenta con ese email -----');
+                        } else if (e.code == 'user-not-found') {
+                          print("---- No encuentro al usuario ----- ");
+                        } else if (e.code == 'wrong-password') {
+                          print("---- La contraseña no cohincide ----- ");
                         }
+                        print(e.code); //Add this line to see other firebase exceptions.
                       } catch (e) {
                         print(e);
                       }
