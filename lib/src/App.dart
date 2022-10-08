@@ -5,6 +5,7 @@ import 'package:my_first_flutter/src/fb_proyects/OnBoardingView.dart';
 import 'package:my_first_flutter/src/home_views/SplashView.dart';
 import 'fb_proyects/Perfil.dart';
 import 'home_views/HomeView.dart';
+import 'home_views/PruebaNewView.dart';
 import 'login_views/LoginPhoneView.dart';
 import 'login_views/LoginView.dart';
 import 'login_views/RegisterView.dart';
@@ -19,7 +20,7 @@ class App extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MyfirstFlutter',
-      initialRoute: '/splashView',
+      initialRoute: '/prueba', //'/splashView',
       routes: {
         '/home':(context) => HomeView(),
         '/loginPhoneView':(context) => LoginPhoneView(),
@@ -27,7 +28,7 @@ class App extends StatelessWidget{
         '/registerView':(context) => RegisterView(),
         '/onBoarding':(context) => OnBoardingView(),
         '/splashView':(context) => SplashView(),
-
+        '/prueba': (context) => PruebaNewView(),
       },
     );
   }
