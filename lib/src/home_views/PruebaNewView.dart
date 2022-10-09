@@ -30,12 +30,13 @@ class PruebaNewView extends StatefulWidget {
         case 0: return LoginView();
         case 1: return RegisterView();
         case 2: return LoginPhoneView();
-        case 3: return LoginView();
+        case 3: return HomeView();
       }
     }
 
     _onSelectDrawer(int pos){
       setState((){
+        Navigator.of(context).pop();
         selectDrawer = pos;
       });
     }
@@ -43,7 +44,7 @@ class PruebaNewView extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
   return Scaffold(
-    backgroundColor: Colors.purple[50],
+    backgroundColor: Colors.purple[100],
     appBar: AppBar(
     backgroundColor: Colors.deepPurple,
     title: Text('My App'),
@@ -53,53 +54,77 @@ class PruebaNewView extends StatefulWidget {
       child: ListView(
       children: [
         UserAccountsDrawerHeader(
-          accountName: Text('UserName',style:TextStyle(fontSize:21,color:Colors.deepPurple)),
-          accountEmail: Text('email@gmail.com',style:TextStyle(fontSize:15,color:Colors.deepPurple)),
+          accountName:
+            Text('UserName',
+                style:TextStyle(
+                    fontSize:21,
+                    color:Colors.purple[900])),
+          accountEmail:
+            Text('email@gmail.com',
+                style:TextStyle(
+                    fontSize:15,
+                    color:Colors.purple[900])),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors:[
+                Colors.purple.shade200,
+                Color(0xFFBA68C8),
+                Colors.purple.shade800
+              ],
+            ),
+            borderRadius: BorderRadius.circular(10),
 
+          ),
           currentAccountPicture: CircleAvatar(
             backgroundColor:Colors.deepPurple,
             child:
               Text('N',
-                style:TextStyle(fontSize: 40.0, color: Colors.purple[50]) ,),
+                style:TextStyle(fontSize: 40.0, color: Colors.purple[200]) ,),
             ),
         ),
         
         ListTile(
           leading: Icon(Icons.app_registration),
-          textColor:Colors.white60,
-          iconColor: Colors.white60,
-          selected: _onSelectDrawer==1,
+          textColor:Colors.purple.shade200,
+          iconColor: Colors.white24,
+          selected: (1== _onSelectDrawer),
           title: Text('Registro'),
           onTap: (){
-            Navigator.of(context).pop();
             _onSelectDrawer(1);
           },
         ),
         ListTile(
           leading: Icon(Icons.phone_android),
-          textColor:Colors.white60,
-          iconColor: Colors.white60,
-          selected: _onSelectDrawer==2,
+          textColor:Colors.purple.shade200,
+          iconColor: Colors.white24,
+          selected: (2== _onSelectDrawer),
           title: Text('Phone Login'),
           onTap: (){
-            Navigator.of(context).pop();
             _onSelectDrawer(2);
           },
         ),
         Divider(
-          color: Colors.white60,
+          color: Colors.white24,
           height: 1,
-          thickness: 3,
+          thickness: 2,
+        ),
+        ListTile(
+          leading: Icon(Icons.person),
+          textColor:Colors.purple.shade200,
+          iconColor: Colors.white24,
+          selected: (3== _onSelectDrawer),
+          title: Text('Profile / Home'),
+          onTap: (){
+          _onSelectDrawer(3);
+          },
         ),
         ListTile(
           leading: Icon(Icons.logout),
-          textColor:Colors.white60,
-          iconColor: Colors.white60,
-          selected: _onSelectDrawer==3,
+          textColor:Colors.purple.shade200,
+          iconColor: Colors.white24,
           title: Text('Logout'),
           onTap: (){
-            Navigator.of(context).pop();
-            _onSelectDrawer(3);
+            _onSelectDrawer(0);
           },
         ),
         ],
