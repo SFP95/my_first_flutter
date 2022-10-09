@@ -45,10 +45,10 @@ class _HomeView extends State<HomeView>{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple[50],
-      appBar: AppBar(
+      /*appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         title: Text('HomeView'),
-      ),
+      ),*/
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

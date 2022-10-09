@@ -50,10 +50,10 @@ class RegisterView extends StatelessWidget{
 
     return Scaffold(
       backgroundColor: Colors.purple[50],
-      appBar: AppBar(
+      /*appBar: AppBar(
         title: Text('RegisterView'),
         backgroundColor: Colors.deepPurple,
-      ),
+      ),*/
       body: Center( //aqui tenia el error
 
         child: Column(
