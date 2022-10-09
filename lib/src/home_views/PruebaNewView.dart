@@ -20,6 +20,19 @@ class PruebaNewView extends StatelessWidget{
         backgroundColor: Colors.white70,
         child: ListView(
           children: [
+            Divider(
+              height: 1,
+              thickness: 7,
+            ),
+            ListTile(
+              leading: Icon(Icons.login),
+              textColor:Colors.deepPurple,
+              iconColor: Colors.deepPurple,
+              title: Text('Login'),
+              onTap: (){
+                Navigator.of(context).popAndPushNamed('/loginView');
+              },
+            ),
             ListTile(
               leading: Icon(Icons.app_registration),
               textColor:Colors.deepPurple,
@@ -27,8 +40,30 @@ class PruebaNewView extends StatelessWidget{
               title: Text('Registro'),
               onTap: (){
                 Navigator.of(context).popAndPushNamed('/registerView');
+                },
+            ),
+            ListTile(
+              leading: Icon(Icons.phone_android),
+              textColor:Colors.deepPurple,
+              iconColor: Colors.deepPurple,
+              title: Text('Phone Login'),
+              onTap: (){
+                Navigator.of(context).popAndPushNamed('/loginPhoneView');
               },
-            )
+            ),
+            Divider(
+              height: 1,
+              thickness: 7,
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              textColor:Colors.deepPurple,
+              iconColor: Colors.deepPurple,
+              title: Text('Logout'),
+              onTap: (){
+                Navigator.of(context).popAndPushNamed('/loginView');
+              },
+            ),
           ],
         ),
       ),
