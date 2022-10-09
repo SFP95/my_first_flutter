@@ -14,10 +14,10 @@ class PruebaNewView extends StatelessWidget{
       backgroundColor: Colors.purple[50],
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text('Navigation Drawer'),
+        title: Text('My Navigation Drawer'),
       ),
       drawer: Drawer(
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.purple[50],
         child: ListView(
           children: [
             Divider(

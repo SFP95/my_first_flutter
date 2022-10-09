@@ -30,7 +30,7 @@ class App extends StatelessWidget{
         '/splashView':(context) => SplashView(),
         '/prueba': (context) => PruebaNewView(),
       },
-      home: HomeView(),
+      home: LoginView(),
       theme: ThemeData(
           primaryColor: Color(101935),
           accentColor: Color(564787)
