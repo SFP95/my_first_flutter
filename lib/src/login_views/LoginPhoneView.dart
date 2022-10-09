@@ -55,8 +55,8 @@ class _LoginPhoneView extends State<LoginPhoneView>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     /* backgroundColor: Colors.purple[50],
-      appBar: AppBar(
+      backgroundColor: Colors.purple[50],
+     /*appBar: AppBar(
         title: const Text('Phone Login'),
         backgroundColor: Colors.deepPurple,
       ),*/
