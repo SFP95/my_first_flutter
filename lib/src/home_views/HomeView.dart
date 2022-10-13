@@ -14,27 +14,31 @@ class HomeView extends StatefulWidget{
 
 }
 
-class _HomeView extends State<HomeView>{
-  FirebaseFirestore db= FirebaseFirestore.instance;
+class _HomeView extends State<HomeView> {
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
-  String nombre=" **** ";
-  bool blIsRefresBtnVisible=true;
+  String nombre = " **** ";
+  bool blIsRefresBtnVisible = true;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProfile();
+  }
 
-  void actualizarNombre() async{
-
-    String? IdUser=FirebaseAuth.instance.currentUser?.uid;
-    final docRef = db.collection("perfiles").doc(IdUser).withConverter(
-        fromFirestore: Perfil.fromFirestore,
-        toFirestore: (Perfil perfil,_)=>perfil.toFirestore());
+  void getProfile() async{
+    final docRef = db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid)
+        .withConverter(fromFirestore: Perfil.fromFirestore,
+      toFirestore: (Perfil perfil, _) => perfil.toFirestore(),
+    );
 
     final docSnap = await docRef.get();
-    final perfilUser = docSnap.data(); // Convert to City object
+    final perfil = docSnap.data(); // Convert to City object
 
-    if (perfilUser != null) {
-      print(perfilUser);
+    if (perfil != null) {
       setState(() {
-        nombre=perfilUser.name!;
+        nombre=perfil.city!;
       });
     } else {
       print("No such document.");
@@ -45,18 +49,15 @@ class _HomeView extends State<HomeView>{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple[50],
-      /*appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: Text('HomeView'),
-      ),*/
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(DataHolder().sMensaje+"-- A HOME: "+nombre),
+            Text(DataHolder().sMensaje + "-- A HOME: " + nombre),
             if (blIsRefresBtnVisible)ElevatedButton(
-                onPressed: (){
-                 actualizarNombre();
+                onPressed: () {
+                  getProfile();
                 },
                 // Respond to button press
 
@@ -65,7 +66,7 @@ class _HomeView extends State<HomeView>{
                   backgroundColor: Colors.purple[900],
                 )),
             ElevatedButton(
-                onPressed: (){
+                onPressed: () {
                   FirebaseAuth.instance.signOut();
                   Navigator.of(context).popAndPushNamed('/loginView');
                 },
@@ -80,3 +81,24 @@ class _HomeView extends State<HomeView>{
     );
   }
 }
+
+/**
+ * void actualizarNombre() async {
+    String? IdUser = FirebaseAuth.instance.currentUser?.uid;
+    final docRef = db.collection("perfiles").doc(IdUser).withConverter(
+    fromFirestore: Perfil.fromFirestore,
+    toFirestore: (Perfil perfil, _) => perfil.toFirestore());
+
+    final docSnap = await docRef.get();
+    final perfilUser = docSnap.data(); // Convert to City object
+
+    if (perfilUser != null) {
+    print(perfilUser);
+    setState(() {
+    nombre = perfilUser.name!;
+    });
+    } else {
+    print("No such document.");
+    }
+    }
+ */

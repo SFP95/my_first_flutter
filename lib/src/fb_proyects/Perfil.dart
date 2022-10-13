@@ -6,6 +6,7 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
   final String? country;
   final int? edad;
   final String? name;
+  final String uid;
 
 
   Perfil({
@@ -13,6 +14,7 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
     this.country="",
     this.edad=0,
     this.name="",
+    this.uid=""
   });
 
  /* void iniPerfil(Map <Strign, dynamic> datos){         ALTERNATIVA A LA DE ABAJO, PERSONAL
@@ -30,6 +32,7 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
       country: data?['country'],
       edad: data?['edad'],
       name: data?['name'],
+      uid: snapshot.id
     );
   }
 
