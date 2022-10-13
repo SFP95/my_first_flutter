@@ -16,13 +16,20 @@ class App extends StatelessWidget{
 
   const App ({Key?key}):super (key: key);
 
-
+  String getInitalRoute(){
+    if(FirebaseAuth.instance.currentUser==null){
+      return '/login';
+    }
+    else{
+      return '/home';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MyfirstFlutter',
-      initialRoute: '/prueba', //'/splashView',
+      initialRoute: getInitalRoute(), //'/splashView',
       routes: {
         '/home':(context) => HomeView(),
         '/loginPhoneView':(context) => LoginPhoneView(),
