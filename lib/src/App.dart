@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/fb_proyects/OnBoardingView.dart';
 import 'package:my_first_flutter/src/home_views/SplashView.dart';
+import 'package:my_first_flutter/src/list_items/ChatItem.dart';
 import 'fb_proyects/Perfil.dart';
+import 'home_views/ChatViews.dart';
 import 'home_views/HomeView.dart';
 import 'home_views/PruebaNewView.dart';
 import 'login_views/LoginPhoneView.dart';
@@ -29,6 +31,7 @@ class App extends StatelessWidget{
         '/onBoarding':(context) => OnBoardingView(),
         '/splashView':(context) => SplashView(),
         '/prueba': (context) => PruebaNewView(),
+        '/chatView': (context) => ChatView(),
       },
       home: LoginView(),
       theme: ThemeData(
