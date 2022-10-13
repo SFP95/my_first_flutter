@@ -50,10 +50,6 @@ class _SplashView extends State<SplashView>{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple[50],
-      appBar: AppBar(
-        title: Text('SplashView'),
-        backgroundColor: Colors.deepPurple,
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
