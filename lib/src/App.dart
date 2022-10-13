@@ -18,7 +18,7 @@ class App extends StatelessWidget{
 
   String getInitalRoute(){
     if(FirebaseAuth.instance.currentUser==null){
-      return '/login';
+      return '/prueba';
     }
     else{
       return '/home';
