@@ -53,7 +53,7 @@ class _HomeView extends State<HomeView>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(DataHolder().sMensaje+"-- BIENVENIDO: "+nombre),
+            Text(DataHolder().sMensaje+"-- A HOME: "+nombre),
             if (blIsRefresBtnVisible)ElevatedButton(
                 onPressed: (){
                  actualizarNombre();
