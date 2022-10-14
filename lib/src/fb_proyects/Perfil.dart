@@ -44,4 +44,8 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
       if (name != null) "name": name,
     };
   }
+
+    void descargarPerfil() async{
+     await Perfil=FbAdmin.descargarPerfil() as Perfil;
+    }
 }
