@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/src/fb_proyects/OnBoardingView.dart';
 import 'package:my_first_flutter/src/home_views/HomeView.dart';
+import 'package:my_first_flutter/src/home_views/SplashView.dart';
 import 'package:my_first_flutter/src/login_views/LoginPhoneView.dart';
 import 'package:my_first_flutter/src/login_views/LoginView.dart';
 import 'package:my_first_flutter/src/login_views/RegisterView.dart';
@@ -31,6 +33,8 @@ class PruebaNewView extends StatefulWidget {
         case 1: return RegisterView();
         case 2: return LoginPhoneView();
         case 3: return HomeView();
+        case 4: return OnBoardingView();
+        case 5: return SplashView();
       }
     }
 
@@ -101,6 +105,26 @@ class PruebaNewView extends StatefulWidget {
           title: Text('Phone Login'),
           onTap: (){
             _onSelectDrawer(2);
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.phone_android),
+          textColor:Colors.purple.shade200,
+          iconColor: Colors.white24,
+          selected: (4== _onSelectDrawer),
+          title: Text('On Boarding'),
+          onTap: (){
+            _onSelectDrawer(4);
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.phone_android),
+          textColor:Colors.purple.shade200,
+          iconColor: Colors.white24,
+          selected: (5== _onSelectDrawer),
+          title: Text('Splash'),
+          onTap: (){
+            _onSelectDrawer(5);
           },
         ),
         Divider(

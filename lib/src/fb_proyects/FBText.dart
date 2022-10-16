@@ -11,7 +11,8 @@ class FBText {
     this.time,
   })
 //no se porque me da error
-  factory FBText.fromFirestore(DocumentSnapshot<Map<String, dynamic>> snapshot,
+
+ factory FBText.fromFirestore(DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,) {
     final data = snapshot.data();
     return FBText(
