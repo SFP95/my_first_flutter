@@ -29,7 +29,7 @@ class _HomeView extends State<HomeView> {
     // TODO: implement initState
     super.initState();
     //getProfile();
-    actulizarLista();
+    actualizarLista();
   }
 
  /* void getProfile() async{
@@ -50,7 +50,7 @@ class _HomeView extends State<HomeView> {
     }
   }*/
 
-   void actulizarLista()async{
+   void actualizarLista()async{
      final docRef = db.collection("rooms").withConverter(fromFirestore: Room.fromFirestore,
        toFirestore: (Room room, _) => room.toFirestore());
 
