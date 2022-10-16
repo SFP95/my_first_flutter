@@ -20,19 +20,19 @@ class HomeView extends StatefulWidget{
 
 class _HomeView extends State<HomeView> {
   FirebaseFirestore db = FirebaseFirestore.instance;
-
   String name = " **** ";
   bool blIsRefresBtnVisible = true;
-  List<QueryDocumentSnapshot<Room>> chatRooms= [];
+  List<Room> chatRooms= [];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getProfile();
+    //getProfile();
+    actulizarLista();
   }
 
-  void getProfile() async{
+ /* void getProfile() async{
     final docRef = db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid)
         .withConverter(fromFirestore: Perfil.fromFirestore,
       toFirestore: (Perfil perfil, _) => perfil.toFirestore(),
@@ -48,7 +48,7 @@ class _HomeView extends State<HomeView> {
     } else {
       print("No such document.");
     }
-  }
+  }*/
 
    void actulizarLista()async{
      final docRef = db.collection("rooms").withConverter(fromFirestore: Room.fromFirestore,
@@ -61,9 +61,13 @@ class _HomeView extends State<HomeView> {
          chatRooms.add(docSnap.docs[i].data());
        }
      });
+   }
 
-
-
+   void listItemShortClicked(int index){
+     print("DEBUG: "+index.toString());
+     print("DEBUG: "+chatRooms[index].name!);
+     DataHolder().selectedChatRoom=chatRooms[index];
+     Navigator.of(context).pushNamed('/chatView');
    }
 
   @override
@@ -71,6 +75,9 @@ class _HomeView extends State<HomeView> {
 
     return Scaffold(
       backgroundColor: Colors.purple[50],
+      appBar: AppBar(
+        title: Text('Bienvenido: ' +DataHolder().perfil.name!),
+      ),
       body: Center(
           child:ListView.separated( //me vale para mi proyecto
               padding: const EdgeInsets.all(8),
@@ -78,7 +85,7 @@ class _HomeView extends State<HomeView> {
               itemBuilder: (BuildContext context, int index) {
                 return RoomItem(
                   Titulo: chatRooms[index].name!,
-                  );
+                  onShortClick: listItemShortClicked,index: index,);
               },
               separatorBuilder: (BuildContext context, int index) {
                 //aqui puedes poner cosas dentros d ela divissiones
