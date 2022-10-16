@@ -7,17 +7,17 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
   final String? country;
   final int? edad;
   final String? name;
-  //final String uid;
+  final String uid;
   final List<String>? friends;
   final List<DocumentReference>? rooms;
 
 
-  Perfil({
+  Perfil( {
     this.city="",
     this.country="",
     this.edad=0,
     this.name="",
-    //this.uid=""
+    this.uid="",
     this.friends= const [],
     this.rooms= const [],
   });
@@ -39,7 +39,7 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
       name: data?['name'],
       friends: data?['friends'] is Iterable ? List.from(data?["friends"]):null,
       rooms: data?['rooms']is Iterable ? List.from(data?["rooms"]):null,
-     // uid: snapshot.id
+      uid: snapshot.id
     );
   }
 

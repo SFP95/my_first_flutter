@@ -17,7 +17,7 @@ class HomeView extends StatefulWidget{
 class _HomeView extends State<HomeView> {
   FirebaseFirestore db = FirebaseFirestore.instance;
 
-  String nombre = " **** ";
+  String name = " **** ";
   bool blIsRefresBtnVisible = true;
 
   @override
@@ -38,7 +38,7 @@ class _HomeView extends State<HomeView> {
 
     if (perfil != null) {
       setState(() {
-        nombre=perfil.city!;
+        name=perfil.name!;
       });
     } else {
       print("No such document.");
@@ -54,7 +54,7 @@ class _HomeView extends State<HomeView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(DataHolder().sMensaje + "-- A HOME: " + nombre),
+            Text(DataHolder().sMensaje + "-- A HOME: " + name),
             if (blIsRefresBtnVisible)ElevatedButton(
                 onPressed: () {
                   getProfile();
@@ -81,24 +81,3 @@ class _HomeView extends State<HomeView> {
     );
   }
 }
-
-/**
- * void actualizarNombre() async {
-    String? IdUser = FirebaseAuth.instance.currentUser?.uid;
-    final docRef = db.collection("perfiles").doc(IdUser).withConverter(
-    fromFirestore: Perfil.fromFirestore,
-    toFirestore: (Perfil perfil, _) => perfil.toFirestore());
-
-    final docSnap = await docRef.get();
-    final perfilUser = docSnap.data(); // Convert to City object
-
-    if (perfilUser != null) {
-    print(perfilUser);
-    setState(() {
-    nombre = perfilUser.name!;
-    });
-    } else {
-    print("No such document.");
-    }
-    }
- */
