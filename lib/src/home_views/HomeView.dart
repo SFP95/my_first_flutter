@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -45,38 +47,30 @@ class _HomeView extends State<HomeView> {
     }
   }
 
+  final List<String> entries = <String>['A', 'B', 'C'];
+  final List<int> colorCodes = <int>[600, 500, 100];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple[50],
-
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(DataHolder().sMensaje + "-- A HOME: " + name),
-            if (blIsRefresBtnVisible)ElevatedButton(
-                onPressed: () {
-                  getProfile();
-                },
-                // Respond to button press
-
-                child: Text("Refrescar!"),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple[900],
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.of(context).popAndPushNamed('/loginView');
-                },
-                // Respond to button press
-                child: Text("Logout"),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple[900],
-                ))
-          ],
-        ),
+          child:ListView.separated( //me vale para mi proyecto
+              padding: const EdgeInsets.all(8),
+              itemCount: entries.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  height: 50,
+                  color: Colors.amber[colorCodes[index]],
+                  child: Center(child: Text('Entry ${entries[index]}')),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                //aqui puedes poner cosas dentros d ela divissiones
+                return const Divider();
+              },
+          ),
       ),
     );
   }

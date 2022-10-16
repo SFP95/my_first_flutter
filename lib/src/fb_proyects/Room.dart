@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Room{
   final String uid;
-  final String? nombre;
+  final String? name;
 
   Room({
     this.uid="",
-    this.nombre=""
+    this.name=""
 });
   factory Room.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -14,14 +14,14 @@ class Room{
       ){
     final data = snapshot.data();
     return Room(
-      nombre: data?['nombre'],
+      name: data?['name'],
       uid:snapshot.id
   );
   }
 
   Map<String, dynamic> toFirestore() {
     return {
-      if (nombre != null) "nombre": nombre,
+      if (name != null) "name": name,
     };
   }
 
