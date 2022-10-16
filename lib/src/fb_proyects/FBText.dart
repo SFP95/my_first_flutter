@@ -1,19 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FBText {
+
+
   final String? text;
   final String? author;
   final Timestamp? time;
 
   FBText({
-    this.text = "",
-    this.author = "",
+    this.text="",
+    this.author="",
     this.time,
-  })
-//no se porque me da error
+  });
 
- factory FBText.fromFirestore(DocumentSnapshot<Map<String, dynamic>> snapshot,
-      SnapshotOptions? options,) {
+  factory FBText.fromFirestore(
+      DocumentSnapshot<Map<String, dynamic>> snapshot,
+      SnapshotOptions? options,
+      ) {
     final data = snapshot.data();
     return FBText(
       text: data?['text'],
