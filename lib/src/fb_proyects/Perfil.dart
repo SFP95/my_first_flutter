@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../firebase/FbAdmin.dart';
 
 class Perfil { // modificar en base a lo que tenemos en la base de datos del firebase
@@ -8,7 +7,9 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
   final String? country;
   final int? edad;
   final String? name;
-  final String uid;
+  //final String uid;
+  final List<String>? friends;
+  final List<DocumentReference>? rooms;
 
 
   Perfil({
@@ -16,7 +17,9 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
     this.country="",
     this.edad=0,
     this.name="",
-    this.uid=""
+    //this.uid=""
+    this.friends= const [],
+    this.rooms= const [],
   });
 
  /* void iniPerfil(Map <Strign, dynamic> datos){         ALTERNATIVA A LA DE ABAJO, PERSONAL
@@ -34,7 +37,9 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
       country: data?['country'],
       edad: data?['edad'],
       name: data?['name'],
-      uid: snapshot.id
+      friends: data?['friends'] is Iterable ? List.from(data?["friends"]):null,
+      rooms: data?['rooms']is Iterable ? List.from(data?["rooms"]):null,
+     // uid: snapshot.id
     );
   }
 
@@ -44,6 +49,8 @@ class Perfil { // modificar en base a lo que tenemos en la base de datos del fir
       if (country != null) "country": country,
       if (edad != 0) "edad": edad,
       if (name != null) "name": name,
+      if (friends!.isNotEmpty) "friends": friends,
+      if (rooms!.isNotEmpty) "country": rooms,
     };
   }
 
