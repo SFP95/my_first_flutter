@@ -86,7 +86,7 @@ class _ChatViewState extends State<ChatView>{
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                color: Colors.amberAccent,
+                color: Colors.purple[200],
                 height: 400,
                 child: ListView.separated(
                   padding: const EdgeInsets.all(8),
