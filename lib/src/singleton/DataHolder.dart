@@ -15,13 +15,13 @@ class DataHolder {
   String sCOLLECTION_ROOMS_NAME="rooms";
   String sCOLLECTION_TEXTS_NAME="texts";
 
-  String sMensaje=" ";
+  String mensaje=" ";
   Perfil perfil=Perfil();
   Room selectedChatRoom = Room();
   FbAdmin fbAdmin = FbAdmin();
 
   DataHolder._internal(){
-    sMensaje="BIENVENIDO ";
+    mensaje="BIENVENIDO ";
   }
 
   factory DataHolder(){
