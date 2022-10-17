@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/fb_proyects/OnBoardingView.dart';
-import 'package:my_first_flutter/src/home_views/SplashView.dart';
+import 'package:my_first_flutter/src/login_views/SplashView.dart';
 import 'package:my_first_flutter/src/list_items/ChatItem.dart';
 import 'fb_proyects/Perfil.dart';
 import 'home_views/ChatViews.dart';

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/src/singleton/DataHolder.dart';
 import '../fb_proyects/Perfil.dart';
 
 class SplashView extends StatefulWidget{
@@ -43,6 +44,7 @@ class _SplashView extends State<SplashView>{
           fromFirestore: Perfil.fromFirestore,
           toFirestore: (Perfil perfil,_)=>perfil.toFirestore());
       final docSnap= await docRef.get();
+      DataHolder().perfil=docSnap.data()!;
       return docSnap.exists;
     }
 

@@ -104,7 +104,7 @@ class _ChatViewState extends State<ChatView>{
               inputMsg,
               OutlinedButton(
                 onPressed: sendPressed,
-                child: Text("Send"),
+                child: Text("Enviar"),
               )
 
             ],

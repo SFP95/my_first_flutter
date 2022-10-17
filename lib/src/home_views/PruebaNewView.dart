@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/fb_proyects/OnBoardingView.dart';
 import 'package:my_first_flutter/src/home_views/HomeView.dart';
-import 'package:my_first_flutter/src/home_views/SplashView.dart';
+import 'package:my_first_flutter/src/login_views/SplashView.dart';
 import 'package:my_first_flutter/src/login_views/LoginPhoneView.dart';
 import 'package:my_first_flutter/src/login_views/LoginView.dart';
 import 'package:my_first_flutter/src/login_views/RegisterView.dart';
