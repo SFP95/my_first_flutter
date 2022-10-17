@@ -31,6 +31,7 @@ class _ChatViewState extends State<ChatView>{
   }
 
   void descargarTextos() async{
+
     String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
         DataHolder().selectedChatRoom.uid+
         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
