@@ -29,7 +29,7 @@ class App extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MyfirstFlutter',
-      initialRoute: getInitalRoute(), //'/splashView',
+      initialRoute: getInitalRoute(),
       routes: {
         '/home':(context) => HomeView(),
         '/loginPhoneView':(context) => LoginPhoneView(),
