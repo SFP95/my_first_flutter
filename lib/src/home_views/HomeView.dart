@@ -27,10 +27,18 @@ class _HomeView extends State<HomeView> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     //getProfile();
     actualizarLista();
   }
 
+
+    void getRoomList(){
+      db.collection('rooms').get().then(
+              (res) => print("Successfull Completted"),
+          onError:(e)=>print("Error completing: $e"))
+          ;
+    }
  /* void getProfile() async{
     final docRef = db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid)
         .withConverter(fromFirestore: Perfil.fromFirestore,
@@ -71,54 +79,28 @@ class _HomeView extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> listaNombres=["Alba",'Rafa','Jess','Carol','Fouad','Nia'];
 
     return Scaffold(
         backgroundColor: Colors.purple[100],
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text('Bienvenido: ' +DataHolder().perfil.name!),
+        title: Text('Bienvenido ' +DataHolder().perfil.name!),
       ),
       body: Center(
         child:
-        GridView.count(
-            primary: false,
-            padding: const EdgeInsets.all(20),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 2,
-            children: <Widget>[
-        Container(
-        padding: const EdgeInsets.all(8),
-        color: Colors.teal[100],
-        child: const Text("He'd have you all unravel at the"),
+        GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 3,
       ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[200],
-          child: const Text('Heed not the rabble'),
-        ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[300],
-          child: const Text('Sound of screams but the'),
-        ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[400],
-          child: const Text('Who scream'),
-        ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[500],
-          child: const Text('Revolution is coming...'),
-        ),
-        Container(
-          padding: const EdgeInsets.all(8),
-          color: Colors.teal[600],
-          child: const Text('Revolution, they...'),
-        )
-      ]
-      ),
+        itemCount: listaNombres.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            color: Colors.pink[300],
+            child: Center(child: Text(listaNombres[index])),
+          );
+        }
+    ),
       )
     );
   }

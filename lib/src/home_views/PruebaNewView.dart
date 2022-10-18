@@ -25,19 +25,19 @@ class PruebaNewView extends StatefulWidget {
 }
   class _PruebaNewView extends State<PruebaNewView>{
 
-    /**Hay que revisarlo porque quiero conseguir que al
-     * logear el usuario salta en el Draver el nombre del
-     * usuario y su correo debajo
-     */
+
       int selectDrawer=0;
-      late RFInputText name=Text('UserName',
-          style:TextStyle(
-              fontSize:21,
-              color:Colors.purple[900])) as RFInputText;
+
+      /**Hay que revisarlo porque quiero conseguir que al
+       * logear el usuario salta en el Draver el nombre del
+       * usuario y su correo debajo
+       */
+    /*
+      late RFInputText name=DataHolder().perfil.name!;
       late RFInputText email=Text('email@gmail.com',
           style:TextStyle(
               fontSize:15,
-              color:Colors.purple[900])) as RFInputText;
+              color:Colors.purple[900])) as RFInputText;*/
 
 
 
@@ -72,9 +72,15 @@ class PruebaNewView extends StatefulWidget {
       child: ListView(
       children: [
         UserAccountsDrawerHeader(
-          accountName:name,
+          accountName:Text('UserName',
+              style:TextStyle(
+                  fontSize:21,
+                  color:Colors.purple[900])),
 
-          accountEmail:email,
+          accountEmail:Text('email@gmail.com',
+              style:TextStyle(
+                  fontSize:15,
+                  color:Colors.purple[900])),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors:[
