@@ -73,12 +73,60 @@ class _HomeView extends State<HomeView> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: Colors.purple[50],
+        backgroundColor: Colors.purple[100],
       appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
         title: Text('Bienvenido: ' +DataHolder().perfil.name!),
       ),
       body: Center(
-          child:ListView.separated( //me vale para mi proyecto
+        child:
+        GridView.count(
+            primary: false,
+            padding: const EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            children: <Widget>[
+        Container(
+        padding: const EdgeInsets.all(8),
+        color: Colors.teal[100],
+        child: const Text("He'd have you all unravel at the"),
+      ),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colors.teal[200],
+          child: const Text('Heed not the rabble'),
+        ),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colors.teal[300],
+          child: const Text('Sound of screams but the'),
+        ),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colors.teal[400],
+          child: const Text('Who scream'),
+        ),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colors.teal[500],
+          child: const Text('Revolution is coming...'),
+        ),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colors.teal[600],
+          child: const Text('Revolution, they...'),
+        )
+      ]
+      ),
+      )
+    );
+  }
+}
+
+
+
+/*child:ListView.separated( //me vale para mi proyecto
               padding: const EdgeInsets.all(8),
               itemCount: chatRooms.length,
               itemBuilder: (BuildContext context, int index) {
@@ -90,8 +138,4 @@ class _HomeView extends State<HomeView> {
                 //aqui puedes poner cosas dentros d ela divissiones
                 return const Divider();
               },
-          ),
-      ),
-    );
-  }
-}
+          ),*/

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
 import 'package:my_first_flutter/src/fb_proyects/OnBoardingView.dart';
 import 'package:my_first_flutter/src/home_views/ChatViews.dart';
 import 'package:my_first_flutter/src/home_views/HomeView.dart';
@@ -24,17 +25,30 @@ class PruebaNewView extends StatefulWidget {
 }
   class _PruebaNewView extends State<PruebaNewView>{
 
-
+    /**Hay que revisarlo porque quiero conseguir que al
+     * logear el usuario salta en el Draver el nombre del
+     * usuario y su correo debajo
+     */
       int selectDrawer=0;
+      late RFInputText name=Text('UserName',
+          style:TextStyle(
+              fontSize:21,
+              color:Colors.purple[900])) as RFInputText;
+      late RFInputText email=Text('email@gmail.com',
+          style:TextStyle(
+              fontSize:15,
+              color:Colors.purple[900])) as RFInputText;
 
 
-    _getDrawerWindow(int pos){
+
+      _getDrawerWindow(int pos){
       switch(pos){
         case 0: return LoginView();
         case 1: return RegisterView();
         case 2: return LoginPhoneView();
         case 3: return ChatView();
         case 4: return OnBoardingView();
+        case 5: return HomeView();
       }
     }
 
@@ -58,16 +72,9 @@ class PruebaNewView extends StatefulWidget {
       child: ListView(
       children: [
         UserAccountsDrawerHeader(
-          accountName:
-            Text('UserName',
-                style:TextStyle(
-                    fontSize:21,
-                    color:Colors.purple[900])),
-          accountEmail:
-            Text('email@gmail.com',
-                style:TextStyle(
-                    fontSize:15,
-                    color:Colors.purple[900])),
+          accountName:name,
+
+          accountEmail:email,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors:[
@@ -86,7 +93,17 @@ class PruebaNewView extends StatefulWidget {
                 style:TextStyle(fontSize: 40.0, color: Colors.purple[200]) ,),
             ),
         ),
-        
+
+        ListTile(
+          leading: Icon(Icons.home),
+          textColor:Colors.purple.shade200,
+          iconColor: Colors.white24,
+          selected: (5== _onSelectDrawer),
+          title: Text('Home'),
+          onTap: (){
+            _onSelectDrawer(5);
+          },
+        ),
         ListTile(
           leading: Icon(Icons.chat_bubble),
           textColor:Colors.purple.shade200,
