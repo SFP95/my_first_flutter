@@ -28,7 +28,7 @@ class _SplashView extends State<SplashView>{
          await Future.delayed(Duration(seconds: 5));
 
       if ( FirebaseAuth.instance.currentUser==null){
-        Navigator.of(context).popAndPushNamed('/loginView');
+        Navigator.of(context).popAndPushNamed('/prueba');
       }else {
         if (checkPerfilExistance() == true) {
           Navigator.of(context).popAndPushNamed('/home');

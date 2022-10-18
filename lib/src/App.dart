@@ -21,7 +21,7 @@ class App extends StatelessWidget{
       return '/prueba';
     }
     else{
-      return '/loginView';
+      return '/prueba';
     }
   }
 

@@ -79,6 +79,7 @@ class _ChatViewState extends State<ChatView>{
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
         title: Text(DataHolder().selectedChatRoom.name!),
       ),
       //backgroundColor: Colors.orangeAccent,

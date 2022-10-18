@@ -45,10 +45,6 @@ class OnBoardingView extends StatelessWidget{
 
     return Scaffold(
       backgroundColor: Colors.purple[50],
-      appBar: AppBar(
-        title: Text('On Boarding'),
-        backgroundColor: Colors.deepPurple,
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

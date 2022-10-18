@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/fb_proyects/OnBoardingView.dart';
+import 'package:my_first_flutter/src/home_views/ChatViews.dart';
 import 'package:my_first_flutter/src/home_views/HomeView.dart';
 import 'package:my_first_flutter/src/login_views/SplashView.dart';
 import 'package:my_first_flutter/src/login_views/LoginPhoneView.dart';
@@ -32,9 +33,8 @@ class PruebaNewView extends StatefulWidget {
         case 0: return LoginView();
         case 1: return RegisterView();
         case 2: return LoginPhoneView();
-        case 3: return HomeView();
+        case 3: return ChatView();
         case 4: return OnBoardingView();
-        case 5: return SplashView();
       }
     }
 
@@ -88,13 +88,13 @@ class PruebaNewView extends StatefulWidget {
         ),
         
         ListTile(
-          leading: Icon(Icons.app_registration),
+          leading: Icon(Icons.chat_bubble),
           textColor:Colors.purple.shade200,
           iconColor: Colors.white24,
-          selected: (1== _onSelectDrawer),
-          title: Text('Registro'),
+          selected: (3== _onSelectDrawer),
+          title: Text('ChatView'),
           onTap: (){
-            _onSelectDrawer(1);
+            _onSelectDrawer(3);
           },
         ),
         ListTile(
@@ -108,7 +108,7 @@ class PruebaNewView extends StatefulWidget {
           },
         ),
         ListTile(
-          leading: Icon(Icons.phone_android),
+          leading: Icon(Icons.border_all),
           textColor:Colors.purple.shade200,
           iconColor: Colors.white24,
           selected: (4== _onSelectDrawer),
@@ -117,29 +117,20 @@ class PruebaNewView extends StatefulWidget {
             _onSelectDrawer(4);
           },
         ),
-        ListTile(
-          leading: Icon(Icons.phone_android),
-          textColor:Colors.purple.shade200,
-          iconColor: Colors.white24,
-          selected: (5== _onSelectDrawer),
-          title: Text('Splash'),
-          onTap: (){
-            _onSelectDrawer(5);
-          },
-        ),
+
         Divider(
           color: Colors.white24,
           height: 1,
           thickness: 2,
         ),
         ListTile(
-          leading: Icon(Icons.person),
+          leading: Icon(Icons.app_registration),
           textColor:Colors.purple.shade200,
           iconColor: Colors.white24,
-          selected: (3== _onSelectDrawer),
-          title: Text('Profile / Home'),
+          selected: (1== _onSelectDrawer),
+          title: Text('Registro'),
           onTap: (){
-          _onSelectDrawer(3);
+          _onSelectDrawer(1);
           },
         ),
         ListTile(
