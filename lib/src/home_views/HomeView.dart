@@ -33,11 +33,16 @@ class _HomeView extends State<HomeView> {
   }
 
 
-    void getRoomList(){
-      db.collection('rooms').get().then(
-              (res) => print("Successfull Completted"),
-          onError:(e)=>print("Error completing: $e"))
-          ;
+    void getRoomList() async{
+      final docRef=db.collection('rooms').withConverter(
+          fromFirestore: Room.fromFirestore,
+          toFirestore: (Room room, _) => room.toFirestore());
+      final docSnap= await docRef.get();
+      setState(() {
+        for(int i=0;i<docSnap.docs.length;i++){
+          chatRooms.add(docSnap.docs[i].data());
+        }
+      });
     }
  /* void getProfile() async{
     final docRef = db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid)
@@ -93,11 +98,11 @@ class _HomeView extends State<HomeView> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 3,
       ),
-        itemCount: listaNombres.length,
+        itemCount: chatRooms.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
             color: Colors.pink[300],
-            child: Center(child: Text(listaNombres[index])),
+            child: Center(child: Text(chatRooms[index].name!)),
           );
         }
     ),
