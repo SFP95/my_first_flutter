@@ -98,11 +98,11 @@ class _HomeView extends State<HomeView> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 3,
       ),
-        itemCount: chatRooms.length,
+        itemCount: 6,
         itemBuilder: (BuildContext context, int index) {
           return Card(
             color: Colors.pink[300],
-            child: Center(child: Text(chatRooms[index].name!)),
+            child: Center(child: Text(chatRooms[index].image!)),
           );
         }
     ),
