@@ -26,7 +26,7 @@ class PruebaNewView extends StatefulWidget {
   class _PruebaNewView extends State<PruebaNewView>{
 
 
-      int selectDrawer=0;
+     late int selectDrawer=0;
 
       /**Hay que revisarlo porque quiero conseguir que al
        * logear el usuario salta en el Draver el nombre del
@@ -54,7 +54,7 @@ class PruebaNewView extends StatefulWidget {
 
     _onSelectDrawer(int pos){
       setState((){
-        Navigator.of(context).pop();
+        Navigator.of(context).pop(); //hace que al selecionar te cierre la barra dle menú
         selectDrawer = pos;
       });
     }

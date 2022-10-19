@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/src/grids_items/RoomCard.dart';
 import 'package:my_first_flutter/src/list_items/RoomItem.dart';
 import 'package:my_first_flutter/src/singleton/DataHolder.dart';
 import '../fb_proyects/Perfil.dart';
@@ -98,12 +99,11 @@ class _HomeView extends State<HomeView> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 3,
       ),
-        itemCount: 6,
+        itemCount: chatRooms.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
-            color: Colors.pink[300],
-            child: Center(child: Text(chatRooms[index].image!)),
-          );
+          return RoomCard(
+              imgURL: chatRooms[index].image!,
+              name: chatRooms[index].name!);
         }
     ),
       )

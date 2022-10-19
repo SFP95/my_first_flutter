@@ -78,9 +78,9 @@ class _ChatViewState extends State<ChatView>{
     // TODO: implement build
 
     return Scaffold(
-      backgroundColor: Colors.purple[100],
+      backgroundColor: Colors.purple[200],
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.purple[900],
         title: Text(DataHolder().selectedChatRoom.name!),
       ),
       //backgroundColor: Colors.orangeAccent,
@@ -105,9 +105,12 @@ class _ChatViewState extends State<ChatView>{
                 ),
               ),
               inputMsg,
-              OutlinedButton(
+              ElevatedButton(
+                style:ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white54,
+                ),
                 onPressed: sendPressed,
-                child: Text("Enviar"),
+                child: Text("Enviar",style: TextStyle(color:Colors.deepPurple, fontSize: 30)),
               )
 
             ],
