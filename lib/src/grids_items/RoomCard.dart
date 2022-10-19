@@ -8,7 +8,7 @@ class RoomCard extends StatelessWidget{
   final String imgURL;
   final String name;
 
-  const RoomCard({Key? key}):super (key:key);
+  const RoomCard({Key? key, required this.imgURL, required this.name}):super (key:key);
 
 
   @override
