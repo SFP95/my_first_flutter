@@ -35,33 +35,21 @@ class _HomeView extends State<HomeView> {
 
 
     void getRoomList() async{
-      final docRef=db.collection('rooms').withConverter(
+      // String Query= SELECT * FROM ROOMS WHERE members>50;
+      final docRef=db.collection('rooms').where('members', isGreaterThan:50).withConverter(
           fromFirestore: Room.fromFirestore,
           toFirestore: (Room room, _) => room.toFirestore());
+
+      //stmt.exexuteQuery(Query);
       final docSnap= await docRef.get();
+
       setState(() {
         for(int i=0;i<docSnap.docs.length;i++){
           chatRooms.add(docSnap.docs[i].data());
         }
       });
     }
- /* void getProfile() async{
-    final docRef = db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid)
-        .withConverter(fromFirestore: Perfil.fromFirestore,
-      toFirestore: (Perfil perfil, _) => perfil.toFirestore(),
-    );
 
-    final docSnap = await docRef.get();
-    final perfil = docSnap.data(); // Convert to City object
-
-    if (perfil != null) {
-      setState(() {
-        name=perfil.name!;
-      });
-    } else {
-      print("No such document.");
-    }
-  }*/
 
    void actualizarLista()async{
      final docRef = db.collection("rooms").withConverter(fromFirestore: Room.fromFirestore,

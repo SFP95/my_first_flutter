@@ -29,8 +29,8 @@ class Room{
   Map<String, dynamic> toFirestore() {
     return {
       if (name != null) "name": name,
-      if (image!= null) "image": image,
-      if (members!= null) '"members': members,
+      if (image != null) "image": image,
+      if (members != null) '"members': members,
     };
   }
 
