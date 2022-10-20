@@ -4,12 +4,15 @@ class Room{
   final String uid;
   final String? name;
   final String? image;
+  final int members;
 
   Room({
     this.uid="",
     this.name="",
     this.image="",
-});
+    this.members=0,
+
+  });
   factory Room.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,
@@ -18,6 +21,7 @@ class Room{
     return Room(
       name: data?['name'],
       image: data?['image'],
+      members: data?['members'],
       uid:snapshot.id
   );
   }
@@ -25,7 +29,8 @@ class Room{
   Map<String, dynamic> toFirestore() {
     return {
       if (name != null) "name": name,
-      if (image!= null) "image": image
+      if (image!= null) "image": image,
+      if (members!= null) '"members': members,
     };
   }
 
