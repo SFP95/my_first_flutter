@@ -36,7 +36,8 @@ class _HomeView extends State<HomeView> {
 
     void getRoomList() async{
       // String Query= SELECT * FROM ROOMS WHERE members>50;
-      final docRef=db.collection('rooms').where('members', isGreaterThan:50).withConverter(
+      final docRef=db.collection('rooms').where('members', isGreaterThan:50).orderBy('memvers',descending: true)
+          .withConverter(
           fromFirestore: Room.fromFirestore,
           toFirestore: (Room room, _) => room.toFirestore());
 
