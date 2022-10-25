@@ -74,7 +74,7 @@ class _HomeView extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> listaNombres=["Alba",'Rafa','Jess','Carol','Fouad','Nia'];
+   // List<String> listaNombres=["Alba",'Rafa','Jess','Carol','Fouad','Nia'];
 
     return Scaffold(
         backgroundColor: Colors.purple[100],
