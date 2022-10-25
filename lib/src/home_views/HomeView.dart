@@ -68,8 +68,8 @@ class _HomeView extends State<HomeView> {
    void listItemShortClicked(int index){
      print("DEBUG: "+index.toString());
      print("DEBUG: "+chatRooms[index].name!);
-     DataHolder().selectedChatRoom=chatRooms[index];
-     Navigator.of(context).pushNamed('/chatView');
+    // DataHolder().selectedChatRoom=chatRooms[index];
+    // Navigator.of(context).pushNamed('/chatView');
    }
 
   @override
@@ -92,7 +92,10 @@ class _HomeView extends State<HomeView> {
         itemBuilder: (BuildContext context, int index) {
           return RoomCard(
               imgURL: chatRooms[index].image!,
-              name: chatRooms[index].name!);
+              name: chatRooms[index].name!,
+              onShorClick: listItemShortClicked,
+              index: index,
+          );
         }
     ),
       )
