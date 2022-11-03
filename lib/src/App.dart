@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/home_views/OnBoardingView.dart';
+import 'package:my_first_flutter/src/login_views/SVLogoWait.dart';
 import 'package:my_first_flutter/src/login_views/SplashView.dart';
 import 'package:my_first_flutter/src/list_items/ChatItem.dart';
 import 'fb_proyects/Perfil.dart';
@@ -19,10 +20,10 @@ class App extends StatelessWidget{
 
   String getInitalRoute(){
     if(FirebaseAuth.instance.currentUser==null){
-      return '/prueba';
+      return '/splashView';
     }
     else{
-      return '/prueba';
+      return '/splashView';
     }
   }
 
@@ -37,7 +38,7 @@ class App extends StatelessWidget{
         '/loginView':(context) =>  LoginView(),
         '/registerView':(context) => RegisterView(),
         '/onBoarding':(context) => OnBoardingView(),
-        '/splashView':(context) => SplashView(),
+        '/splashView':(context) => SVLogoWait(),
         '/prueba': (context) => PruebaNewView(),
         '/chatView': (context) => ChatView(),
       },
