@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -34,17 +36,17 @@ class OnBoardingView extends StatelessWidget{
     await db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).set(perfil.toFirestore())
         .onError((e, _) => print("Error writing document: $e"));
 
-    Navigator.of(context).popAndPushNamed('/home');
+    Navigator.of(context).pop('/home');
     }
 
-    void checkExistingProfile() async{
+    void checkExistingProfile(BuildContext context) async{
       String? idUser=FirebaseAuth.instance.currentUser?.uid;
       final docRef=db.collection("perfiles").doc(idUser);
 
       DocumentSnapshot docsnap=await docRef.get();
 
       if(docsnap.exists){
-        Navigator.of(context).pop("/home");
+        Navigator.of(context).pop('/home');
       }
     }
 
