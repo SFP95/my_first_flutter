@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_first_flutter/src/fb_proyects/OnBoardingView.dart';
+import 'package:my_first_flutter/src/home_views/OnBoardingView.dart';
 import 'package:my_first_flutter/src/login_views/SplashView.dart';
 import 'package:my_first_flutter/src/list_items/ChatItem.dart';
 import 'fb_proyects/Perfil.dart';
@@ -14,7 +14,8 @@ import 'login_views/RegisterView.dart';
 
 class App extends StatelessWidget{
 
-  const App ({Key?key}):super (key: key);
+   App ({Key?key}):super (key: key);
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
   String getInitalRoute(){
     if(FirebaseAuth.instance.currentUser==null){
