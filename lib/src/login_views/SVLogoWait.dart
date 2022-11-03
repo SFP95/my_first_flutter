@@ -18,6 +18,8 @@ class _SplashVewState extends State<SVLogoWait>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image(image: AssetImage("assets/images/Logo.png")),
+            SizedBox(height: 30),
             Text("Cargando Flutter_Chat", style: TextStyle(fontSize: 25),),
             SizedBox(height: 30),
             CircularProgressIndicator(
