@@ -37,6 +37,17 @@ class OnBoardingView extends StatelessWidget{
     Navigator.of(context).popAndPushNamed('/home');
     }
 
+    void checkExistingProfile() async{
+      String? idUser=FirebaseAuth.instance.currentUser?.uid;
+      final docRef=db.collection("perfiles").doc(idUser);
+
+      DocumentSnapshot docsnap=await docRef.get();
+
+      if(docsnap.exists){
+        Navigator.of(context).pop("/home");
+      }
+    }
+
   @override
   Widget build(BuildContext context) {
   //inputEdad.setInitialValue("VALOR INICIAL NOMBRE");
