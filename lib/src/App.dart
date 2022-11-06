@@ -3,9 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/home_views/OnBoardingView.dart';
 import 'package:my_first_flutter/src/login_views/SVLogoWait.dart';
-import 'package:my_first_flutter/src/login_views/SplashView.dart';
-import 'package:my_first_flutter/src/list_items/ChatItem.dart';
-import 'fb_proyects/Perfil.dart';
 import 'home_views/ChatViews.dart';
 import 'home_views/HomeView.dart';
 import 'home_views/PruebaNewView.dart';
@@ -43,10 +40,6 @@ class App extends StatelessWidget{
         '/chatView': (context) => ChatView(),
       },
       home: LoginView(),
-      theme: ThemeData(
-          primaryColor: Color(101935),
-          accentColor: Color(564787)
-      ),
     );
   }
 
