@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/home_views/OnBoardingView.dart';
 import 'package:my_first_flutter/src/login_views/SVLogoWait.dart';
+import 'package:my_first_flutter/src/singleton/DataHolder.dart';
 import 'home_views/ChatViews.dart';
 import 'home_views/HomeView.dart';
 import 'home_views/PruebaNewView.dart';
@@ -26,21 +27,42 @@ class App extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MyfirstFlutter',
-      initialRoute: getInitalRoute(),
-      routes: {
-        '/home':(context) => HomeView(),
-        '/loginPhoneView':(context) => LoginPhoneView(),
-        '/loginView':(context) =>  LoginView(),
-        '/registerView':(context) => RegisterView(),
-        '/onBoarding':(context) => OnBoardingView(),
-        '/splashView':(context) => SVLogoWait("assets/images/Logo.png"),
-        '/prueba': (context) => PruebaNewView(),
-        '/chatView': (context) => ChatView(),
-      },
-      home: LoginView(),
-    );
-  }
+    print("La PLATAFORMA ES ..... --> "+DataHolder().platformAdmin.isWebPlatform().toString());
 
-}
+    MaterialApp materialAppMobile=const MaterialApp();
+
+     if(DataHolder().platformAdmin.isAndroidPlatform() ||
+         DataHolder().platformAdmin.isIOSPlatform()) {
+
+       materialAppMobile==MaterialApp(
+         title: 'MyfirstFlutter',
+         initialRoute: getInitalRoute(),
+         routes: {
+           '/home': (context) => HomeView(),
+           '/loginPhoneView': (context) => LoginPhoneView(),
+           '/loginView': (context) => LoginView(),
+           '/registerView': (context) => RegisterView(),
+           '/onBoarding': (context) => OnBoardingView(),
+           '/splashView': (context) => SVLogoWait("assets/images/Logo.png"),
+           '/prueba': (context) => PruebaNewView(),
+           '/chatView': (context) => ChatView(),
+         },
+       );
+     }else if(DataHolder().platformAdmin.isWebPlatform()){
+       materialAppMobile=MaterialApp(
+           initialRoute: '/Splash',
+           routes: {
+             '/home': (context) => HomeView(),
+             '/loginPhoneView': (context) => LoginPhoneView(),
+             '/loginView': (context) => LoginView(),
+             '/registerView': (context) => RegisterView(),
+             '/onBoarding': (context) => OnBoardingView(),
+             '/splashView': (context) => SVLogoWait("assets/images/Logo.png"),
+             '/prueba': (context) => PruebaNewView(),
+             '/chatView': (context) => ChatView(),
+           },
+       );
+           }
+       return materialAppMobile;
+     }
+  }

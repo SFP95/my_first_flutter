@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:my_first_flutter/src/singleton/DataHolder.dart';
 
 
 class SVLogoWait extends StatefulWidget{
@@ -57,6 +58,7 @@ class _SplashVewState extends State<SVLogoWait>{
 
   @override
   Widget build(BuildContext context) {
+    DataHolder().platformAdmin.initDisplayData(context);
     return Scaffold(
       backgroundColor: Colors.purple[50],
       body: Center(

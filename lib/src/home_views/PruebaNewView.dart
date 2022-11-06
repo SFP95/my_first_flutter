@@ -57,6 +57,7 @@ class PruebaNewView extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
+    DataHolder().platformAdmin.initDisplayData(context);
   return Scaffold(
     backgroundColor: Colors.purple[100],
     appBar: AppBar(

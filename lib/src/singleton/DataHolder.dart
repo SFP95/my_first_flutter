@@ -1,5 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:my_first_flutter/src/fb_proyects/Perfil.dart';
 import '../fb_proyects/Room.dart';
 import '../firebase/FbAdmin.dart';
@@ -31,6 +32,9 @@ class DataHolder {
     platformAdmin=PlatformAdmin();
   }
 
+  void initPlattformAdmininDisplaySotting(BuildContext context){
+    platformAdmin.initDisplayData(context);
+  }
   factory DataHolder(){
     return _dataHolder;
   }
