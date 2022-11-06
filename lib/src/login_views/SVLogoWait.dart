@@ -35,7 +35,7 @@ class _SplashVewState extends State<SVLogoWait>{
       bool existe=await checkExistingProfile();
       if(existe){
         setState(() {
-          Navigator.of(context).pop('/home');
+          Navigator.of(context).pop('/prueba');
         });
       }else{
         setState(() {
