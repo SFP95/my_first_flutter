@@ -38,7 +38,7 @@ class App extends StatelessWidget{
         '/loginView':(context) =>  LoginView(),
         '/registerView':(context) => RegisterView(),
         '/onBoarding':(context) => OnBoardingView(),
-        '/splashView':(context) => SVLogoWait(),
+        '/splashView':(context) => SVLogoWait("assets/images/Logo.png"),
         '/prueba': (context) => PruebaNewView(),
         '/chatView': (context) => ChatView(),
       },

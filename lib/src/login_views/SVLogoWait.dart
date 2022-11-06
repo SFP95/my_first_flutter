@@ -5,18 +5,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 class SVLogoWait extends StatefulWidget{
+
+  final String logoPath;
+  const SVLogoWait(this.logoPath, {super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _SplashVewState();
   }
-  
 }
 
 class _SplashVewState extends State<SVLogoWait>{
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadAllData();
   }
@@ -61,11 +63,11 @@ class _SplashVewState extends State<SVLogoWait>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image(image: AssetImage("assets/images/Logo.png")),
-            SizedBox(height: 30),
-            Text("Cargando Flutter_Chat", style: TextStyle(fontSize: 25),),
-            SizedBox(height: 30),
-            CircularProgressIndicator(
+            Image(image: AssetImage(widget.logoPath)),
+            const SizedBox(height: 30),
+            const Text("Cargando...", style: TextStyle(fontSize: 25),),
+            const SizedBox(height: 30),
+            const CircularProgressIndicator(
               semanticsLabel: 'Cirular progress indicator',
             ),
           ],
