@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_first_flutter/src/fb_proyects/Perfil.dart';
 import '../fb_proyects/Room.dart';
 import '../firebase/FbAdmin.dart';
+import '../platform/PlatformAdmin.dart';
 
 class DataHolder {
   /*mensajes que podemos llevar a todas las pantallas que queremos arrastrar
@@ -20,8 +21,14 @@ class DataHolder {
   Room selectedChatRoom = Room();
   FbAdmin fbAdmin = FbAdmin();
 
+  double dSCREEN_WIDTH=0;
+  double dSCREEN_HEIGHT=0;
+
+  late PlatformAdmin platformAdmin;
+
   DataHolder._internal(){
     mensaje="BIENVENIDO ";
+    platformAdmin=PlatformAdmin();
   }
 
   factory DataHolder(){
