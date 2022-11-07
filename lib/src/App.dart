@@ -27,12 +27,11 @@ class App extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    print("La PLATAFORMA ES ..... --> "+DataHolder().platformAdmin.isWebPlatform().toString());
 
     MaterialApp materialAppMobile=const MaterialApp();
 
      if(DataHolder().platformAdmin.isAndroidPlatform() ||
-         DataHolder().platformAdmin.isIOSPlatform()) {
+         DataHolder().platformAdmin.isIOSPlatform()){
 
        materialAppMobile==MaterialApp(
          title: 'MyfirstFlutter',
@@ -64,6 +63,8 @@ class App extends StatelessWidget{
            },
        );
      }
-       return materialAppMobile;
+    print("La PLATAFORMA ES ..... --> "+DataHolder().platformAdmin.isWebPlatform().toString());
+
+    return materialAppMobile;
      }
   }
