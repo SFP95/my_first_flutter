@@ -43,7 +43,7 @@ class App extends StatelessWidget{
            '/registerView': (context) => RegisterView(),
            '/onBoarding': (context) => OnBoardingView(),
            '/splashView': (context) => SVLogoWait("assets/images/Logo.png"),
-           '/prueba': (context) => PruebaNewView(),
+           //'/prueba': (context) => PruebaNewView(),
            '/chatView': (context) => ChatView(),
          },
        );
@@ -58,7 +58,7 @@ class App extends StatelessWidget{
              '/registerView': (context) => RegisterView(),
              '/onBoarding': (context) => OnBoardingView(),
              '/splashView': (context) => SVLogoWait("assets/images/Logo.png"),
-             '/prueba': (context) => PruebaNewView(),
+             //'/prueba': (context) => PruebaNewView(),
              '/chatView': (context) => ChatView(),
            },
        );
