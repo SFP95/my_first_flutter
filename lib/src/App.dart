@@ -21,7 +21,7 @@ class App extends StatelessWidget{
       return '/splashView';
     }
     else{
-      return '/splashView';
+      return '/loginView';
     }
   }
 
@@ -48,9 +48,10 @@ class App extends StatelessWidget{
            '/chatView': (context) => ChatView(),
          },
        );
-     }else if(DataHolder().platformAdmin.isWebPlatform()){
+     }
+     else if(DataHolder().platformAdmin.isWebPlatform()){
        materialAppMobile=MaterialApp(
-           initialRoute: '/Splash',
+         initialRoute: getInitalRoute(),
            routes: {
              '/home': (context) => HomeView(),
              '/loginPhoneView': (context) => LoginPhoneView(),
@@ -62,7 +63,7 @@ class App extends StatelessWidget{
              '/chatView': (context) => ChatView(),
            },
        );
-           }
+     }
        return materialAppMobile;
      }
   }

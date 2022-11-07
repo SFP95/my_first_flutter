@@ -12,11 +12,11 @@ class SVLogoWait extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState() {
-    return _SplashVewState();
+    return _SVLogoWait();
   }
 }
 
-class _SplashVewState extends State<SVLogoWait>{
+class _SVLogoWait extends State<SVLogoWait>{
 
   @override
   void initState() {
@@ -29,14 +29,14 @@ class _SplashVewState extends State<SVLogoWait>{
 
     if(FirebaseAuth.instance.currentUser==null){
       setState(() {
-        Navigator.of(context).pop('/prueba');
+        Navigator.of(context).pop('/loginView');
       });
     }
     else{
       bool existe=await checkExistingProfile();
       if(existe){
         setState(() {
-          Navigator.of(context).pop('/prueba');
+          Navigator.of(context).pop('/home');
         });
       }else{
         setState(() {

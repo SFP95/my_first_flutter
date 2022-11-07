@@ -31,10 +31,10 @@ class DataHolder {
     mensaje="BIENVENIDO ";
     platformAdmin=PlatformAdmin();
   }
-
+/*
   void initPlattformAdmininDisplaySotting(BuildContext context){
     platformAdmin.initDisplayData(context);
-  }
+  }*/
   factory DataHolder(){
     return _dataHolder;
   }
