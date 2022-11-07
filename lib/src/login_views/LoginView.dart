@@ -86,7 +86,7 @@ class LoginView extends StatelessWidget{
                 ),
                 ElevatedButton(
                     onPressed: (){
-                      Navigator.of(context).pushNamed('/registerView');
+                      Navigator.of(context).popAndPushNamed('/registerView');
                     },
                     // Respond to button press
 

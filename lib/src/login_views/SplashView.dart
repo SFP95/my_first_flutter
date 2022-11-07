@@ -37,7 +37,7 @@ class _SplashView extends State<SplashView>{
         }
       }
     }
-
+        //??
     Future<bool> checkPerfilExistance() async {
 
       final docRef = db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).withConverter(

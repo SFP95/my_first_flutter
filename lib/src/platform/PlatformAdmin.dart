@@ -33,6 +33,6 @@ class PlatformAdmin {
      //&& defaultTargetPlatform != TargetPlatform.linux
      //&& defaultTargetPlatform != TargetPlatform.windows
      //&& defaultTargetPlatform != TargetPlatform.macOS
-         ;
+     ;
    }
  }

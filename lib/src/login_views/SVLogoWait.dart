@@ -29,18 +29,18 @@ class _SVLogoWait extends State<SVLogoWait>{
 
     if(FirebaseAuth.instance.currentUser==null){
       setState(() {
-        Navigator.of(context).pop('/loginView');
+        Navigator.of(context).popAndPushNamed('/loginView');
       });
     }
     else{
       bool existe=await checkExistingProfile();
       if(existe){
         setState(() {
-          Navigator.of(context).pop('/home');
+          Navigator.of(context).popAndPushNamed('/home');
         });
       }else{
         setState(() {
-          Navigator.of(context).pop('/onBoarding');
+          Navigator.of(context).popAndPushNamed('/onBoarding');
         });
       }
     }

@@ -15,7 +15,7 @@ class App extends StatelessWidget{
 
    App ({Key?key}):super (key: key);
   FirebaseFirestore db = FirebaseFirestore.instance;
-
+/*
   String getInitalRoute(){
     if(FirebaseAuth.instance.currentUser==null){
       return '/splashView';
@@ -23,7 +23,7 @@ class App extends StatelessWidget{
     else{
       return '/loginView';
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class App extends StatelessWidget{
 
        materialAppMobile==MaterialApp(
          title: 'MyfirstFlutter',
-         initialRoute: getInitalRoute(),
+         initialRoute: '/splashView',
          routes: {
            '/home': (context) => HomeView(),
            '/loginPhoneView': (context) => LoginPhoneView(),
@@ -51,7 +51,7 @@ class App extends StatelessWidget{
      }
      else if(DataHolder().platformAdmin.isWebPlatform()){
        materialAppMobile=MaterialApp(
-         initialRoute: getInitalRoute(),
+         initialRoute: '/splashView',
            routes: {
              '/home': (context) => HomeView(),
              '/loginPhoneView': (context) => LoginPhoneView(),
