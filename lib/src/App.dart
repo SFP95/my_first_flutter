@@ -35,7 +35,7 @@ class App extends StatelessWidget{
         //print("ENTRO EN ANDROID O IOS");
        materialAppMobile=MaterialApp(
          title: 'MyfirstFlutter',
-         initialRoute: '/splashView',
+         initialRoute: '/prueba',
          routes: {
            '/home': (context) => HomeView(),
            '/loginPhoneView': (context) => LoginPhoneView(),
@@ -43,7 +43,7 @@ class App extends StatelessWidget{
            '/registerView': (context) => RegisterView(),
            '/onBoarding': (context) => OnBoardingView(),
            '/splashView': (context) => SVLogoWait("assets/images/Logo.png"),
-           //'/prueba': (context) => PruebaNewView(),
+           '/prueba': (context) => PruebaNewView(),
            '/chatView': (context) => ChatView(),
          },
        );
