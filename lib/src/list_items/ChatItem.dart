@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../custom_views/chat_bubbles/send_menssage_bubble.dart';
+
 class ChatItem extends StatelessWidget{
 
   final String texto;
@@ -11,12 +13,13 @@ class ChatItem extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SendMessageBubble(Mensaje: texto);
+      /*Container(
       height: 25,
       child: Center(
         child: Text(texto),
       ),
-    );
+    );*/
   }
 
 }

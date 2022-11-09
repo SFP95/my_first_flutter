@@ -91,17 +91,17 @@ class _ChatViewState extends State<ChatView>{
               Container(
                 color: Colors.purple[200],
                 height: 400,
-                child: ListView.separated(
-                  padding: const EdgeInsets.all(8),
+                child: ListView.builder(
+                  //padding: const EdgeInsets.all(8),
                   itemCount: chatTexts.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ChatItem(texto: chatTexts[index].text!,
                       onShortClick: listItemShortClicked,index: index,);
                   },
-                  separatorBuilder: (BuildContext context, int index) {
+                  /*separatorBuilder: (BuildContext context, int index) {
                     return const Divider();
                     //return RFInputText2(sTitulo: "DIVISOR DEL: "+entries[index],);
-                  },
+                  },*/
                 ),
               ),
               inputMsg,
