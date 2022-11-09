@@ -27,8 +27,12 @@ class _SVLogoWait extends State<SVLogoWait>{
   void loadAllData() async{
     await Future.delayed(Duration(seconds: 2));
 
+    print("PASO POR AQUI part 1");
+
     if(FirebaseAuth.instance.currentUser==null){
       setState(() {
+        print("PASO POR AQUI part 2.1");
+
         Navigator.of(context).popAndPushNamed('/loginView');
       });
     }
@@ -36,6 +40,7 @@ class _SVLogoWait extends State<SVLogoWait>{
       bool existe=await checkExistingProfile();
       if(existe){
         setState(() {
+          print("PASO POR AQUI part 2.2");
           Navigator.of(context).popAndPushNamed('/home');
         });
       }else{

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:io';
 import '../custom_views/RFInputText.dart';
 import '../fb_proyects/FBText.dart';
 import '../list_items/ChatItem.dart';
