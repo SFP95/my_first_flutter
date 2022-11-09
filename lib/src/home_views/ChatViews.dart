@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -62,8 +63,8 @@ class _ChatViewState extends State<ChatView>{
     final docRef = db.collection(path);
 
     FBText texto=FBText(text:inputMsg.getText(),
-        author: DataHolder().perfil.uid,time: Timestamp.now());
-
+        author: FirebaseAuth.instance.currentUser?.uid ,time: Timestamp.now());
+              //DataHolder().perfil.uid
     await docRef.add(texto.toFirestore());
 
     //descargarTextos();
@@ -73,6 +74,7 @@ class _ChatViewState extends State<ChatView>{
   void listItemShortClicked(int index){
 
   }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -96,7 +98,7 @@ class _ChatViewState extends State<ChatView>{
                   itemCount: chatTexts.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ChatItem(texto: chatTexts[index].text!,
-                      onShortClick: listItemShortClicked,index: index,);
+                      onShortClick: listItemShortClicked,index: index, author: chatTexts[index].author!,);
                   },
                   /*separatorBuilder: (BuildContext context, int index) {
                     return const Divider();
