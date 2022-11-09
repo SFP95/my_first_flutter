@@ -52,7 +52,6 @@ class LoginView extends StatelessWidget{
               children: [
                 ElevatedButton(
                   onPressed: ()async{
-
                       print("FUNCIONO  --  "+inputUser.getText());
 
                       try {
