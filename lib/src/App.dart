@@ -35,7 +35,7 @@ class App extends StatelessWidget{
         //print("ENTRO EN ANDROID O IOS");
        materialAppMobile=MaterialApp(
          title: 'MyfirstFlutter',
-         initialRoute: '/prueba',
+         initialRoute: '/splashView',
          routes: {
            '/home': (context) => HomeView(),
            '/loginPhoneView': (context) => LoginPhoneView(),
@@ -63,7 +63,7 @@ class App extends StatelessWidget{
            },
        );
      }
-    print("La PLATAFORMA ES ..... --> "+DataHolder().platformAdmin.isAndroidPlatform().toString());
+    //print("La PLATAFORMA ES ..... --> "+DataHolder().platformAdmin.isAndroidPlatform().toString());
 
     return materialAppMobile;
      }
