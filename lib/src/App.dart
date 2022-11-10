@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/home_views/OnBoardingView.dart';
 import 'package:my_first_flutter/src/login_views/SVLogoWait.dart';
 import 'package:my_first_flutter/src/singleton/DataHolder.dart';
-import 'home_views/ChatViews.dart';
+import 'home_views/ChatView.dart';
 import 'home_views/HomeView.dart';
 import 'home_views/PruebaNewView.dart';
 import 'login_views/LoginPhoneView.dart';
