@@ -69,7 +69,7 @@ class _HomeView extends State<HomeView> {
      print("DEBUG: "+index.toString());
      print("DEBUG: "+chatRooms[index].name!);
     // DataHolder().selectedChatRoom=chatRooms[index];
-    // Navigator.of(context).pushNamed('/chatView');
+     Navigator.of(context).pushNamed('/chatView');
    }
 
   @override
@@ -80,7 +80,7 @@ class _HomeView extends State<HomeView> {
         backgroundColor: Colors.purple[100],
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text('Bienvenido ' +DataHolder().perfil.name!),
+        title: Text('HOME'),
       ),
       body: Center(
         child:

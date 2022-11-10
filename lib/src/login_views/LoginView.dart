@@ -37,10 +37,10 @@ class LoginView extends StatelessWidget{
 
     return Scaffold(
       backgroundColor: Colors.purple[50],
-      /*appBar: AppBar(
+      appBar: AppBar(
         title: Text('LoginView'),
         backgroundColor: Colors.deepPurple,
-      ),*/
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
