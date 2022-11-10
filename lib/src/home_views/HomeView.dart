@@ -90,12 +90,28 @@ class _HomeView extends State<HomeView> {
       ),
         itemCount: chatRooms.length,
         itemBuilder: (BuildContext context, int index) {
-          return RoomCard(
-              imgURL: chatRooms[index].image!,
-              name: chatRooms[index].name!,
-              onShorClick: listItemShortClicked,
-              index: index,
+          return
+            Row(
+            children: [
+              RoomCard(
+                imgURL: chatRooms[index].image!,
+                name: chatRooms[index].name!,
+                onShorClick: listItemShortClicked,
+                index: index,
+              ),
+             /* ElevatedButton(
+                  onPressed: (){
+                    Navigator.of(context).popAndPushNamed('/chatView');
+                  },
+                  // Respond to button press
+
+                  child: Text("ChatView"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple[900],
+                  ))*/
+            ]
           );
+
         }
     ),
       )

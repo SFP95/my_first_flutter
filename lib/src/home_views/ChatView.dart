@@ -54,6 +54,14 @@ class _ChatViewState extends State<ChatView>{
       onError: (error) => print("Listen failed: $error"),
       );
     }
+  int compareChatText(FBText a,FBText b){
+    int? res=a.time?.compareTo(b.time!);
+    //print("COMPARATOR A: "+a.time.toString()+"  B: "+b.time.toString()+" = "+res.toString());
+    return res!;
+    //return a.time?.compareTo(b.time!);
+
+    //return 0;
+  }
 
   void sendPressed()async {
     String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
@@ -63,8 +71,8 @@ class _ChatViewState extends State<ChatView>{
     final docRef = db.collection(path);
 
     FBText texto=FBText(text:inputMsg.getText(),
-        author: FirebaseAuth.instance.currentUser?.uid ,time: Timestamp.now());
-              //DataHolder().perfil.uid
+        author: DataHolder().perfil.uid ,time: Timestamp.now());
+              // FirebaseAuth.instance.currentUser?.uid
     await docRef.add(texto.toFirestore());
 
     //descargarTextos();
@@ -98,7 +106,9 @@ class _ChatViewState extends State<ChatView>{
                   itemCount: chatTexts.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ChatItem(texto: chatTexts[index].text!,
-                      onShortClick: listItemShortClicked,index: index, author: chatTexts[index].author!,);
+                      onShortClick: listItemShortClicked,
+                      index: index,
+                      author: chatTexts[index].author!,);
                   },
                   /*separatorBuilder: (BuildContext context, int index) {
                     return const Divider();
@@ -112,7 +122,10 @@ class _ChatViewState extends State<ChatView>{
                   backgroundColor: Colors.white54,
                 ),
                 onPressed: sendPressed,
-                child: Text("Enviar",style: TextStyle(color:Colors.deepPurple, fontSize: 30)),
+                child: Text("Enviar",
+                    style: TextStyle(
+                        color:Colors.deepPurple,
+                        fontSize: 30)),
               )
 
             ],
