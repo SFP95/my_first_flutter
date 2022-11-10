@@ -84,36 +84,19 @@ class _HomeView extends State<HomeView> {
       ),
       body: Center(
         child:
-        GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 3,
-      ),
+      GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        ),
         itemCount: chatRooms.length,
         itemBuilder: (BuildContext context, int index) {
-          return
-            Row(
-            children: [
-              RoomCard(
-                imgURL: chatRooms[index].image!,
-                name: chatRooms[index].name!,
-                onShorClick: listItemShortClicked,
-                index: index,
-              ),
-             /* ElevatedButton(
-                  onPressed: (){
-                    Navigator.of(context).popAndPushNamed('/chatView');
-                  },
-                  // Respond to button press
-
-                  child: Text("ChatView"),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple[900],
-                  ))*/
-            ]
-          );
+        return RoomCard(
+          imgURL:chatRooms[index].image!,
+          name :chatRooms[index].name!,
+          onShorClick: listItemShortClicked,index: index,);
 
         }
-    ),
+        ),
       )
     );
   }
