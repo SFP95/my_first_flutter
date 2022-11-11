@@ -40,14 +40,14 @@ class _ChatViewState extends State<ChatView>{
   }
 
   void descargarTextos() async{
-    //    EDeAL8r0mBn2jHHEo9tt
+    // "EDeAL8r0mBn2jHHEo9tt"+
 
     // String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
     //         DataHolder().selectedChatRoom.uid+
     //         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
-        "EDeAL8r0mBn2jHHEo9tt"+
+        DataHolder().selectedChatRoom.uid+
         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     final docRef = db.collection(path).

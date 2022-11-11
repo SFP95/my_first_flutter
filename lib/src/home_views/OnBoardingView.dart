@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_first_flutter/src/custom_views/RFInputText.dart';
 
 import '../fb_proyects/Perfil.dart';
+import '../singleton/DataHolder.dart';
 
 class OnBoardingView extends StatelessWidget{
 
@@ -31,14 +32,14 @@ class OnBoardingView extends StatelessWidget{
     Perfil perfil= Perfil(name: nombre, country: pais, city: ciudad,edad: edad);
 
 
-    await db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).set(perfil.toFirestore())
+    await db.collection("perfiles").doc(DataHolder().perfil.uid).set(perfil.toFirestore())
         .onError((e, _) => print("Error writing document: $e"));
 
     Navigator.of(context).pop('/home');
     }
 
     void checkExistingProfile(BuildContext context) async{
-      String? idUser=FirebaseAuth.instance.currentUser?.uid;
+      String? idUser=DataHolder().perfil.uid;
       final docRef=db.collection("perfiles").doc(idUser);
 
       DocumentSnapshot docsnap=await docRef.get();
