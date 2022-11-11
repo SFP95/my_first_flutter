@@ -70,7 +70,8 @@ class OnBoardingView extends StatelessWidget{
                 ElevatedButton(
                   onPressed:(){
                     accepPressed(inputNombre.getText(),inputPais.getText(),inputCiudad.getText(),int.parse(inputEdad.getText()),context);
-                  },
+                    Navigator.of(context).popAndPushNamed('/home');
+                    },
 
                   child: Text("Aceptar"),
                   style: ElevatedButton.styleFrom(
