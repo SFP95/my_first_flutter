@@ -27,7 +27,7 @@ class _SplashView extends State<SplashView>{
     void isUserLogged()async{
          await Future.delayed(Duration(seconds: 5));
 
-      if ( FirebaseAuth.instance.currentUser==null){
+      if ( DataHolder().perfil.uid==null){
         Navigator.of(context).popAndPushNamed('/loginView');
       }else {
         if (checkPerfilExistance() == true) {
@@ -40,7 +40,7 @@ class _SplashView extends State<SplashView>{
         //??
     Future<bool> checkPerfilExistance() async {
 
-      final docRef = db.collection("perfiles").doc(FirebaseAuth.instance.currentUser?.uid).withConverter(
+      final docRef = db.collection("perfiles").doc(DataHolder().perfil.uid).withConverter(
           fromFirestore: Perfil.fromFirestore,
           toFirestore: (Perfil perfil,_)=>perfil.toFirestore());
       final docSnap= await docRef.get();
