@@ -29,6 +29,8 @@ class _SVLogoWait extends State<SVLogoWait>{
 
     print("PASO POR AQUI part 1");
     // FirebaseAuth.instance.currentUser
+    // DataHolder().perfil.uid
+
     if(DataHolder().perfil.uid ==null){
       setState(() {
         print("PASO POR AQUI part 2.1");
