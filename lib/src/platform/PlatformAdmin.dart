@@ -36,4 +36,14 @@ class PlatformAdmin{
         ;
   }
 
+  double getScreenWidth(BuildContext context){
+    dSCREEN_WIDTH=MediaQuery.of(context).size.width;
+    return dSCREEN_WIDTH;
+  }
+
+  double getScreenHeight(BuildContext context){
+    dSCREEN_HEIGHT=MediaQuery.of(context).size.height;
+    return dSCREEN_HEIGHT;
+  }
+
 }

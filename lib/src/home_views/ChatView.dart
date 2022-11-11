@@ -1,7 +1,9 @@
+import 'package:chat_bubbles/message_bars/message_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import '../custom_views/RFInputText.dart';
 import '../fb_proyects/FBText.dart';
@@ -22,6 +24,12 @@ class _ChatViewState extends State<ChatView>{
   List<FBText> chatTexts = [];
   RFInputText inputMsg=RFInputText();
 
+  final ImagePicker _picker = ImagePicker();
+  late File imageFile;
+  bool blImageLoaded=false;
+  double dListHeightPorcentage=0.8;
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -32,9 +40,14 @@ class _ChatViewState extends State<ChatView>{
   }
 
   void descargarTextos() async{
+    //    EDeAL8r0mBn2jHHEo9tt
+
+    // String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
+    //         DataHolder().selectedChatRoom.uid+
+    //         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
-        DataHolder().selectedChatRoom.uid+
+        "EDeAL8r0mBn2jHHEo9tt"+
         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     final docRef = db.collection(path).
@@ -64,24 +77,39 @@ class _ChatViewState extends State<ChatView>{
     //return 0;
   }
 
-  void sendPressed()async {
+  void sendPressed(String sNuevoTexto)async {
     String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
         DataHolder().selectedChatRoom.uid+
         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     final docRef = db.collection(path);
 
-    FBText texto=FBText(text:inputMsg.getText(),
-        author: DataHolder().selectedChatRoom.uid ,time: Timestamp.now());
-              // FirebaseAuth.instance.currentUser?.uid
+    FBText texto=FBText(text:sNuevoTexto,
+        author: FirebaseAuth.instance.currentUser?.uid,time: Timestamp.now());
+
     await docRef.add(texto.toFirestore());
 
+    setState(() {
+      blImageLoaded=false;
+      dListHeightPorcentage=0.8;
+    });
     //descargarTextos();
 
   }
 
   void listItemShortClicked(int index){
 
+  }
+  void selectImage() async{
+    final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    //final XFile? pickedFile = await _picker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      setState(() {
+        imageFile = File(pickedFile.path);
+        blImageLoaded=true;
+        dListHeightPorcentage=0.5;
+      });
+    }
   }
 
   @override
@@ -117,17 +145,47 @@ class _ChatViewState extends State<ChatView>{
                   },*/
                 ),
               ),
-              inputMsg,
-              ElevatedButton(
-                style:ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white54,
+
+              if(blImageLoaded)Container(height: DataHolder().platformAdmin.getScreenHeight(context)*0.3,
+                child: Image.file(
+                  imageFile,
+                  fit: BoxFit.fitHeight,
                 ),
-                onPressed: sendPressed,
-                child: Text("Enviar",
-                    style: TextStyle(
-                        color:Colors.deepPurple,
-                        fontSize: 30)),
-              )
+              ),
+
+              MessageBar(
+                onSend: (texto) => { sendPressed(texto)},
+                actions: [
+
+                  Padding(
+                    padding: EdgeInsets.only(left: 0, right: 8),
+                    child: InkWell(
+                      child: Icon(
+                        Icons.camera_alt,
+                        color: Colors.purple[800],
+                        size: DataHolder().platformAdmin.getScreenWidth(context)*0.065,
+                      ),
+                      onTap: () {
+                        selectImage();
+
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              /*Row(
+
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Flexible(child: inputMsg),
+                  //Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
+                  Flexible(child:OutlinedButton(
+                    onPressed: sendPressed,
+                    child: Text("Send"),
+                  ))
+                ],
+              )*/
+
 
             ],
           )
@@ -135,4 +193,4 @@ class _ChatViewState extends State<ChatView>{
       ),
     );
   }
-  }
+}
