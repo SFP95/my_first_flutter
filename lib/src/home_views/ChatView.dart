@@ -49,6 +49,7 @@ class _ChatViewState extends State<ChatView>{
           for(int i=0;i<event.docs.length;i++){
             chatTexts.add(event.docs[i].data());
           }
+          chatTexts.sort(compareChatText);
         })
       },
       onError: (error) => print("Listen failed: $error"),
