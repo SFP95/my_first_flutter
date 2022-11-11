@@ -25,8 +25,8 @@ class RFInputText extends StatelessWidget{
       controller: myController,
       cursorColor: Colors.purpleAccent,
       maxLength: 80,
-     // enableSuggestions: !blIsPsswd,
-      //autocorrect: !blIsPsswd,
+      enableSuggestions: !blIsPsswd,
+      autocorrect: !blIsPsswd,
       decoration: InputDecoration(
         icon: Icon(Icons.account_circle_outlined),
         labelText:  titulo , //EMAIL el this.titulo no funciona

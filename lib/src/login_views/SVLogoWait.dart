@@ -47,7 +47,7 @@ class _SVLogoWait extends State<SVLogoWait>{
         });
       }else{
         setState(() {
-          Navigator.of(context).popAndPushNamed('/onBoarding');
+          Navigator.of(context).popAndPushNamed('/registerView');
         });
       }
     }

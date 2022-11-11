@@ -14,11 +14,11 @@ class LoginView extends StatelessWidget{
      ayuda: 'No menos de 8 caracteres',
      blIsPsswd: true,);
 
-  void LogPressed(String inputUser, String inputPsswd, BuildContext context) async{
+  void LogPressed(RFInputText inputUser, RFInputText inputPsswd, BuildContext context) async{
     try{
       final credential= await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: inputUser,
-        password: inputPsswd,
+        email: inputUser.getText(),
+        password: inputPsswd.getText(),
       );
       print("ESTOY LOGEADO");
       Navigator.of(context).popAndPushNamed('/onBoarding');
@@ -52,14 +52,14 @@ class LoginView extends StatelessWidget{
               children: [
                 ElevatedButton(
                   onPressed: ()async{
-                      print("FUNCIONO  --  "+inputUser.getText());
+                      print("FUNCIONO  --  "+inputUser.getText() +" -- "+inputPsswd.getText());
 
                       try {
                         final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                           email: inputUser.getText(),
                           password: inputPsswd.getText(),
                         );
-                        print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
+                        print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText()+ "---"+ inputPsswd.getText());
                         Navigator.of(context).popAndPushNamed('/home');
 
                       } on FirebaseAuthException catch (e) {

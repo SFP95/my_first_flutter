@@ -21,7 +21,7 @@ class RegisterView extends StatelessWidget{
 
 
   void btnPressed(BuildContext context) async{
-    print("FUNCIONO  --  "+inputUser.getText());
+    print("FUNCIONO  --  "+inputUser.getText()+"--"+ inputPss.getText());
     try {
       final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: inputUser.getText(),
@@ -82,6 +82,7 @@ class RegisterView extends StatelessWidget{
                 ElevatedButton(
                         onPressed: (){
                           Navigator.of(context).popAndPushNamed('/loginView');
+                          print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText()+ "---"+ inputPss.getText());
                         },
                         // Respond to button press
 
