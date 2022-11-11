@@ -36,7 +36,7 @@ class _HomeView extends State<HomeView> {
 
     void getRoomList() async{
       // String Query= SELECT * FROM ROOMS WHERE members>50;
-      final docRef=db.collection('rooms').where('members', isGreaterThan:50).orderBy('memvers',descending: true)
+      final docRef=db.collection('rooms').where('members', isGreaterThan:50).orderBy('members',descending: true)
           .withConverter(
           fromFirestore: Room.fromFirestore,
           toFirestore: (Room room, _) => room.toFirestore());
@@ -93,8 +93,8 @@ class _HomeView extends State<HomeView> {
         return RoomCard(
           imgURL:chatRooms[index].image!,
           name :chatRooms[index].name!,
-          onShorClick: listItemShortClicked,index: index,);
-
+          onShorClick: listItemShortClicked,
+          index: index,);
         }
         ),
       )
