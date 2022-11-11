@@ -58,7 +58,7 @@ class _ChatViewState extends State<ChatView>{
     docRef.snapshots().listen(
           (event) => {
         setState(() {
-          chatTexts.clear();
+         // chatTexts.clear();
           for(int i=0;i<event.docs.length;i++){
             chatTexts.add(event.docs[i].data());
           }
