@@ -50,7 +50,7 @@ class App extends StatelessWidget{
      }
      else{
        materialAppMobile=MaterialApp(
-         initialRoute: '/home',
+         initialRoute: '/splashView',
            routes: {
              '/home': (context) => HomeView(),
              '/loginPhoneView': (context) => LoginPhoneView(),
