@@ -137,7 +137,7 @@ class _ChatViewState extends State<ChatView>{
                     return ChatItem(texto: chatTexts[index].text!,
                       onShortClick: listItemShortClicked,
                       index: index,
-                      author: chatTexts[index].idUser!,);
+                      author: chatTexts[index].idUser,);
                   },
                   /*separatorBuilder: (BuildContext context, int index) {
                     return const Divider();

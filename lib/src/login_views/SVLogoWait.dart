@@ -31,7 +31,7 @@ class _SVLogoWait extends State<SVLogoWait>{
     // FirebaseAuth.instance.currentUser
     // DataHolder().perfil.uid
 
-    if(DataHolder().perfil.uid ==null){
+    if(DataHolder().perfil.uid==null){
       setState(() {
         print("PASO POR AQUI part 2.1");
 
@@ -54,6 +54,7 @@ class _SVLogoWait extends State<SVLogoWait>{
   }
 
   Future<bool> checkExistingProfile() async{
+    // FirebaseAuth.instance.currentUser?.uid  DataHolder().perfil.uid
     String? idUser=FirebaseAuth.instance.currentUser?.uid;
     FirebaseFirestore db=FirebaseFirestore.instance;
     final docRef=db.collection("perfiles").doc(idUser);

@@ -10,7 +10,7 @@ class ChatItem extends StatelessWidget{
   final String texto;
   final Function(int index) onShortClick;
   final int index;
-  final String author;
+  final String? author;
 
   const ChatItem({Key? key, this.texto="mensaje", required this.onShortClick,
     required this.index, required this.author}) : super(key: key);

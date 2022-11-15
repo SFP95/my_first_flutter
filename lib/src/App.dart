@@ -35,7 +35,7 @@ class App extends StatelessWidget{
         //print("ENTRO EN ANDROID O IOS");
        materialAppMobile=MaterialApp(
          title: 'MyfirstFlutter',
-         initialRoute: '/splashView',
+         initialRoute: '/home',
          routes: {
            '/home': (context) => HomeView(),
            '/loginPhoneView': (context) => LoginPhoneView(),

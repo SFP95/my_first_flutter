@@ -17,7 +17,7 @@ class SendMessageBubble extends StatelessWidget{
                 child: Container(
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(
-                    color: Colors.purple[800],
+                    color: Colors.purple[700],
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(18),
                       bottomLeft: Radius.circular(18),
