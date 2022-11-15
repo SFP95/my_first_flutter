@@ -117,7 +117,8 @@ class _ChatViewState extends State<ChatView>{
     // TODO: implement build
 
     return Scaffold(
-      backgroundColor: Colors.purple[200],
+
+     backgroundColor: Colors.purple[100],
       appBar: AppBar(
         backgroundColor: Colors.purple[900],
         title: Text(DataHolder().selectedChatRoom.name!),
@@ -128,7 +129,7 @@ class _ChatViewState extends State<ChatView>{
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                color: Colors.purple[200],
+                color: Colors.purple[100],
                 height: 400,
                 child: ListView.builder(
                   //padding: const EdgeInsets.all(8),

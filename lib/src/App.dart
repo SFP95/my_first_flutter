@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +36,10 @@ class App extends StatelessWidget{
          DataHolder().platformAdmin.isIOSPlatform()){
         //print("ENTRO EN ANDROID O IOS");
        materialAppMobile=MaterialApp(
+         theme: ThemeData(
+           backgroundColor: Colors.purple[100],
+           fontFamily:
+         ),
          title: 'MyfirstFlutter',
          initialRoute: '/home',
          routes: {
