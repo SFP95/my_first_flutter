@@ -47,7 +47,7 @@ class _ChatViewState extends State<ChatView>{
     //         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
-        DataHolder().selectedChatRoom.uid+
+        "EDeAL8r0mBn2jHHEo9tt"+
         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     final docRef = db.collection(path).
@@ -79,7 +79,7 @@ class _ChatViewState extends State<ChatView>{
 
   void sendPressed(String sNuevoTexto)async {
     String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
-        DataHolder().selectedChatRoom.uid+
+        "EDeAL8r0mBn2jHHEo9tt"+
         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     final docRef = db.collection(path);
