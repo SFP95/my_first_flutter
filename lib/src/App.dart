@@ -38,10 +38,10 @@ class App extends StatelessWidget{
        materialAppMobile=MaterialApp(
          theme: ThemeData(
            backgroundColor: Colors.purple[100],
-           fontFamily:
+           fontFamily:'Reach Story'
          ),
          title: 'MyfirstFlutter',
-         initialRoute: '/home',
+         initialRoute: '/chatView',
          routes: {
            '/home': (context) => HomeView(),
            '/loginPhoneView': (context) => LoginPhoneView(),
