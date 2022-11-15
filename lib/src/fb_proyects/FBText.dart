@@ -4,12 +4,12 @@ class FBText {
 
 
   final String? text;
-  final String? author;
+  final String? idUser;
   final Timestamp? time;
 
   FBText({
     this.text="",
-    this.author="",
+    this.idUser="",
     this.time,
   });
 
@@ -20,7 +20,7 @@ class FBText {
     final data = snapshot.data();
     return FBText(
       text: data?['text'],
-      author: data?['author'],
+      idUser: data?['idUser'],
       time: data?['time'],
     );
   }
@@ -28,7 +28,7 @@ class FBText {
   Map<String, dynamic> toFirestore() {
     return {
       if (text != null) "text": text,
-      if (author != null) "author": author,
+      if (idUser != null) "idUser": idUser,
       if (time != null) "time": time,
     };
   }

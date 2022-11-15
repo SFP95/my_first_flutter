@@ -47,7 +47,7 @@ class _ChatViewState extends State<ChatView>{
     //         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
-        "EDeAL8r0mBn2jHHEo9tt"+
+        DataHolder().selectedChatRoom.uid+
         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     final docRef = db.collection(path).
@@ -79,13 +79,13 @@ class _ChatViewState extends State<ChatView>{
 
   void sendPressed(String sNuevoTexto)async {
     String path=DataHolder().sCOLLECTION_ROOMS_NAME+"/"+
-        "EDeAL8r0mBn2jHHEo9tt"+
+        DataHolder().selectedChatRoom.uid+
         "/"+DataHolder().sCOLLECTION_TEXTS_NAME;
 
     final docRef = db.collection(path);
 
     FBText texto=FBText(text:sNuevoTexto,
-        author: FirebaseAuth.instance.currentUser?.uid,time: Timestamp.now());
+        idUser: FirebaseAuth.instance.currentUser?.uid,time: Timestamp.now());
 
     await docRef.add(texto.toFirestore());
 
@@ -137,7 +137,7 @@ class _ChatViewState extends State<ChatView>{
                     return ChatItem(texto: chatTexts[index].text!,
                       onShortClick: listItemShortClicked,
                       index: index,
-                      author: chatTexts[index].author!,);
+                      author: chatTexts[index].idUser!,);
                   },
                   /*separatorBuilder: (BuildContext context, int index) {
                     return const Divider();
