@@ -25,7 +25,7 @@ class _SplashView extends State<SplashView>{
   }
 
     void isUserLogged()async{
-         await Future.delayed(Duration(seconds: 5));
+         await Future.delayed(Duration(seconds: 3));
 
       if ( DataHolder().perfil.uid==null){
         Navigator.of(context).popAndPushNamed('/loginView');
