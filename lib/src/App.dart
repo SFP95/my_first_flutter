@@ -41,7 +41,7 @@ class App extends StatelessWidget{
            fontFamily:'Reach Story'
          ),
          title: 'MyfirstFlutter',
-         initialRoute: '/chatView',
+         initialRoute: '/splashView',
          routes: {
            '/home': (context) => HomeView(),
            '/loginPhoneView': (context) => LoginPhoneView(),
