@@ -48,9 +48,9 @@ class App extends StatelessWidget{
          },
        );
      }
-     else if(DataHolder().platformAdmin.isWebPlatform()){
+     else{
        materialAppMobile=MaterialApp(
-         initialRoute: '/splashView',
+         initialRoute: '/home',
            routes: {
              '/home': (context) => HomeView(),
              '/loginPhoneView': (context) => LoginPhoneView(),
