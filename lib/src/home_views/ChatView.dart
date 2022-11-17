@@ -85,7 +85,9 @@ class _ChatViewState extends State<ChatView>{
     final docRef = db.collection(path);
 
     FBText texto=FBText(text:sNuevoTexto,
-        idUser: FirebaseAuth.instance.currentUser?.uid,time: Timestamp.now());
+        idUser: FirebaseAuth.instance.currentUser?.uid,
+        time: Timestamp.now(),
+        );
 
     await docRef.add(texto.toFirestore());
 
