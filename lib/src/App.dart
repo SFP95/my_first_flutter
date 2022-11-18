@@ -48,7 +48,7 @@ class App extends StatelessWidget{
            '/loginView': (context) => LoginView(),
            '/registerView': (context) => RegisterView(),
            '/onBoarding': (context) => OnBoardingView(),
-           '/splashView': (context) => SVLogoWait("assets/andoid/images/logoAndroid_sinfondo.png"),
+           '/splashView': (context) => const SVLogoWait("assets/android/images/logoAndroid_sinfondo.png"),
            //'/prueba': (context) => PruebaNewView(),
            '/chatView': (context) => ChatView(),
          },
