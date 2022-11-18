@@ -28,13 +28,11 @@ class _SVLogoWait extends State<SVLogoWait>{
     await Future.delayed(Duration(seconds: 2));
 
     print("PASO POR AQUI part 1");
-    // FirebaseAuth.instance.currentUser
-    // DataHolder().perfil.uid
+    // FirebaseAuth.instance.currentUser == null
+    // DataHolder().perfil.uid == null
 
     if(DataHolder().perfil.uid==null){
       setState(() {
-        print("PASO POR AQUI part 2.1");
-
         Navigator.of(context).popAndPushNamed('/loginView');
       });
     }
@@ -42,7 +40,6 @@ class _SVLogoWait extends State<SVLogoWait>{
       bool existe=await checkExistingProfile();
       if(existe){
         setState(() {
-          print("PASO POR AQUI part 2.2");
           Navigator.of(context).popAndPushNamed('/home');
         });
       }else{

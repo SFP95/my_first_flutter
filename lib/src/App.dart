@@ -48,7 +48,7 @@ class App extends StatelessWidget{
            '/loginView': (context) => LoginView(),
            '/registerView': (context) => RegisterView(),
            '/onBoarding': (context) => OnBoardingView(),
-           '/splashView': (context) => SVLogoWait("assets/images/Logo.png"),
+           '/splashView': (context) => SVLogoWait("assets/andoid/images/logoAndroid_sinfondo.png"),
            //'/prueba': (context) => PruebaNewView(),
            '/chatView': (context) => ChatView(),
          },
@@ -57,13 +57,16 @@ class App extends StatelessWidget{
      else{
        materialAppMobile=MaterialApp(
          initialRoute: '/splashView',
+         theme: ThemeData(
+             backgroundColor: Colors.purple[800], //distincion de plataforma
+         ),
            routes: {
              '/home': (context) => HomeView(),
              '/loginPhoneView': (context) => LoginPhoneView(),
              '/loginView': (context) => LoginView(),
              '/registerView': (context) => RegisterView(),
              '/onBoarding': (context) => OnBoardingView(),
-             '/splashView': (context) => SVLogoWait("assets/images/Logo.png"),
+             '/splashView': (context) => SVLogoWait("assets/web/images/Logo.png"),
              //'/prueba': (context) => PruebaNewView(),
              '/chatView': (context) => ChatView(),
            },
